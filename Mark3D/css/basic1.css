@@ -1,0 +1,221 @@
+body,html{height:100%;margin:0;overflow:hidden}
+body{background:#111;font:90%/1.2 Arial}
+
+
+
+
+
+
+/*body,div {cursor:none;}*/
+
+.viewport{position:relative;overflow:hidden;width:100%;height:100%;background:#000}
+#viewport{-webkit-transition:.5s;transition:.5s;height:100%}
+#gun {
+    background: url("../img/gun.png");
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 2000;
+    height: 315px;
+    width: 360px;
+    z-index: 1;
+    -webkit-animation: gun 2.5s infinite;
+    animation: gun 2.5s infinite;
+}
+#camera {transform:translate3d(0px,0px,700px)}
+#dot img {
+  background: url("../img/aim1.svg");
+  width: 50px;
+  height: 50px;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  position: fixed;
+  z-index: 1;
+}
+
+#view {    
+  transition: .5s;
+  height: 100%;
+}
+#scene0 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);
+}
+.face {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
+}
+.scene, .shape, .face, .face-wrapper, .cr {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+.scene {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform-style: preserve-3d;
+  -webkit-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0px,150px,-200px); 
+  -moz-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0px,150px,-200px); 
+  -ms-transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0px,150px,-200px); 
+  transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0px,150px,-200px);
+}
+.shape {
+    backface-visibility: hidden;
+    background-blend-mode: multiply;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+}
+.face {
+/*  overflow: hidden;*/
+  transform-origin: 0 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%!important;
+  background-position: center;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+
+.photon-shader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../img/wall.jpg');
+  transform-style: preserve-3d;
+  transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0px,0px,0px) skewX(0deg) skewY(0deg);;
+}
+
+.side {
+  left: 50%;
+}
+.cr, .cr .side {
+  height: 100%;
+}
+
+[class*="cuboid"] .bk {
+  left: 50px;
+}
+[class*="cuboid"] .rt, [class*="cuboid"] .rt1 {
+  transform: rotateY(-90deg) translateX(-50%);
+}
+[class*="cuboid"] .lt, [class*="cuboid"] .lt1 {
+  transform: rotateY(90deg) translateX(-50%);
+}
+[class*="cuboid"] .tp, [class*="cuboid"] .tp1 {
+  transform: rotateX(90deg) translateY(-50%);
+}
+[class*="cuboid"] .bm, [class*="cuboid"] .bm1 {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+[class*="cuboid"] .lt {
+  left: 50px;
+}
+[class*="cuboid"] .bm {
+  top: 50px;
+}
+/* .cub-1 styles */
+.cub {opacity: 1;transform-style: preserve-3d;}
+
+.ft000 {
+  width: 1000px;height: 1000px;position: absolute;    
+  backface-visibility: hidden;
+  background-blend-mode: multiply;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  background: url("../img/floor.jpg");
+  transform:translate3D(250px,-300px,-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)  skewX(0deg) skewY(0deg);
+}
+.cub .ft {
+  transform: translateZ(25px);
+}
+.cub .bk {
+  transform: translateZ(-25px) rotateY(180deg);
+}
+.cub .rt, .cub .lt {
+  width: 50px;
+  height: 100px;
+}
+.cub .tp, .cub .bm {
+  width: 50px;
+  height: 50px;
+}
+.cub .ft, .cub .bk {
+  width: 50px;
+  height: 100px;
+}
+
+/*.cub .face {
+  background-color: gray;
+}*/
+
+
+
+
+
+.threedee {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 50%;
+  backface-visibility: hidden;
+
+}
+.assembly0 {
+    transform:translate3D(50px,200px,300px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(0.5,0.5,0.5);
+}
+.assembly1 {
+    transform:translate3D(110px,200px,300px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(0.5,0.5,0.5);
+}
+.assembly2 {
+    transform:translate3D(170px,200px,300px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(0.5,0.5,0.5);
+}
+#box-toggle:checked ~ .assembly .face1 {
+  outline: 1px solid #000;
+  background: #fff !important;
+  backface-visibility: visible;
+}
+/*@keyframes spin {
+  to {
+    transform: rotateY(360deg) rotateZ(360deg) rotateX(720deg);
+  }
+}*/
+
+
+
+
+
+
+
+
+#gun{position:absolute;bottom:0;left:50%;z-index:2000;height:315px;width:360px;z-index:1;-webkit-animation:gun 2.5s infinite;animation:gun 2.5s infinite}
+
+@-webkit-keyframes gun {50% {-webkit-transform: translateY(7px) scale(0.99);transform: translateY(7px) scale(0.99)}}
+@keyframes gun {50% {transform: translateY(7px) scale(0.99)}}
+
+
+
+/*
+======== TERRAIN =========
+*/
+.roof_style {background: url("../img/roof.jpeg");z-index: 1000}
+.grass_style {background: url("../img/grass2.png");z-index: -1}
+.wall_style {background: url('../img/wall.jpg');z-index: 1000}
+.sky_style {background: url('../img/sky.jpg');background-size: cover}
+/*
+======== ======= =========
+
+
+
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+    <title>Боёвка Star Wars: The Jihad</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="en">
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/basic.css" type="text/css">
+
+</head>
+
+<body>
+<div id="gamespace">
+    <div id="gameSettings">
+        <h1> Game Settings </h1>
+        <label class="optionLeft">
+            Game mode
+            <select>
+                <option>Deathmatch</option>
+            </select>
+        </label>
+        <label class="optionRight">
+            Map
+            <select>
+                <option>Strange place</option>
+            </select>
+        </label>
+        <label class="optionRight initBut">
+            <button onclick="initGame()">START</button>
+        </label>
+        <div style="clear:both;"></div>
+    </div>
+    <div id="attackPopUp">
+        <div id="attackPopUpIn">
+            <select id="attackSelect"></select>
+            <button onclick="makeAttack()" id="popUpAttack">Attack</button>
+        </div>
+    </div>
+</div>
+<div id="tridiv">
+  <div class="scene">
+    <div class="shape cuboid-1 cub-1">
+      <div class="face ft">
+        <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0901961);"></div>
+      </div>
+      <div class="face bk">
+        <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0901961);"></div>
+      </div>
+      <div class="face rt">
+        <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0901961);"></div>
+      </div>
+      <div class="face lt">
+        <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0901961);"></div>
+      </div>
+      <div class="face bm">
+        <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0901961);"></div>
+      </div>
+      <div class="face tp">
+        <div class="photon-shader" style="background-color: rgba(0, 0, 0, 0.0901961);"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+    <script src="scripts/script.js"></script>
+</html>
+

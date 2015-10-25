@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>SUPA-PUPA-3D</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="en">
+<!--     <link rel="stylesheet" href="css/reset.css" type="text/css"> -->
+    <link rel="stylesheet" href="./css/basic1.css" type="text/css">
+    <script src="scripts/myfunctions.js"></script>
+    <script src="scripts/prefix.js"></script>
+    <script src="scripts/minimap1.js"></script>
+</head>
+<script>
+
+</script>
+<!-- <body onkeydown="movementFunction(event)" onmousemove="turningFunction(event)" onmousewheel="scrollingFunction(event)"> -->
+<body id="all">
+    <div class="viewport" style="perspective: 700px;">
+            <div id="dot">
+                <img src="./img/aim1.svg">
+            </div>
+        <div id="gun"></div>
+        <div id="camera" style="position:absolute;left:50%;top:50%;transform-style:preserve-3d;transform:translate3d(0px,0px,0px)
+         rotateX(0deg) rotateY(180deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+            <div id="place" style="position:absolute;left:0%;top:0%;transform-style:preserve-3d;transform:translate3d(0px,0px,0px)
+             rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                <div id="place-inner" style="position:absolute;left:0%;top:0%;transform-style:preserve-3d;transform:translate3d(0px,0px,700px)
+                 rotateX(0deg) rotateY(180deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+
+<script src="./scripts/script1.js"></script>
+
+</html>
+
