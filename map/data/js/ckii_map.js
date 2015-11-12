@@ -1,13 +1,16 @@
 var map = L.map('map', {
     crs: L.CRS.Simple
 }).setView([-800, 800], 0);
-
-
-
+map.on({
+    zoomend: function() {
+        map.fitBounds(map.getBounds());
+    }
+});
 $.ajax({method: "GET", url: "/getFactions"}).done( function( data ) {
     var factions = data;
     $.ajax({method: "GET", url: "/getCampaignInfo"}).done( function( data ) {
         var campaignInfo = data;
+
         var geojson = L.geoJson(ckii_provdata, {
             style: campaignInfo,
             onEachFeature: onEachFeature
@@ -58,7 +61,6 @@ $.ajax({method: "GET", url: "/getFactions"}).done( function( data ) {
         }
         function zoomToFeature(e) {
             map.fitBounds(e.target.getBounds());
-            console.log(map.getZoom());
         }
         function onEachFeature(feature, prov) {
             prov.on({
@@ -67,6 +69,7 @@ $.ajax({method: "GET", url: "/getFactions"}).done( function( data ) {
                 click: zoomToFeature
             });
         }
+
         function updateMapInfo(region_id, region_owner) {
             $.ajax({method: "POST", url: "/setCampaignInfo", data: {
                 'id':region_id, 'country': region_owner
@@ -76,7 +79,6 @@ $.ajax({method: "GET", url: "/getFactions"}).done( function( data ) {
             })
         }
 
-        //updateMapInfo('111','aragon');
         var info = L.control();
         info.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info');
