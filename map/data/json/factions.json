@@ -1,0 +1,101 @@
+{
+  "aragon" : {
+    "color": "rgb(212,175,55)"
+  },
+  "navarra" : {
+    "color": "rgb(140,0,140)"
+  },
+  "leon" : {
+    "color": "rgb(165,42,42)"
+  },
+  "castile" : {
+    "color": "rgb(255,210,0)"
+  },
+  "portugal" : {
+    "color": "rgb(200,200,200)"
+  },
+  "mauritania" : {
+    "color": "rgb(236,88,0)"
+  },
+  "france" : {
+    "color": "rgb(0,87,177)"
+  },
+  "burgundy" : {
+    "color": "rgb(140,0,70)"
+  },
+  "toulouse" : {
+    "color": "rgb(212,3,238)"
+  },
+  "england" : {
+    "color": "rgb(215,0,0)"
+  },
+  "scotland" : {
+    "color": "rgb(0,16,94)"
+  },
+  "wales" : {
+    "color": "rgb(20,67,244)"
+  },
+  "ireland" : {
+    "color": "rgb(34,93,48)"
+  },
+  "hre" : {
+    "color": "rgb(30,30,30)"
+  },
+  "denmark" : {
+    "color": "rgb(239, 185, 24)"
+  },
+  "norway" : {
+    "color": "rgb(128,36,26)"
+  },
+  "sweden" : {
+    "color": "rgb(0,82,147)"
+  },
+  "poland" : {
+    "color": "rgb(230,230,230)"
+  },
+  "lithuania" : {
+    "color": "rgb(128,55,34)"
+  },
+  "hungary" : {
+    "color": "rgb(221,70,50)"
+  },
+  "cumans" : {
+    "color": "rgb(116,45,13)"
+  },
+  "russia" : {
+    "color": "rgb(12,30,119)"
+  },
+  "milan" : {
+    "color": "rgb(1,82,9)"
+  },
+  "bologna" : {
+    "color": "rgb(255,167,11)"
+  },
+  "napoli" : {
+    "color": "rgb(70,70,70)"
+  },
+  "rome" : {
+    "color": "rgb(200,200,155)"
+  },
+  "venice" : {
+    "color": "rgb(121,3,3)"
+  },
+  "byzantium" : {
+    "color": "rgb(76,36,78)"
+  },
+  "turks" : {
+    "color": "rgb(34,107,9)"
+  },
+  "armenia" : {
+    "color": "rgb(32,70,68)"
+  },
+  "kwarezm" : {
+    "color": "rgb(0,139,129)"
+  },
+  "egypt" : {
+    "color": "rgb(211,176,69)"
+  },
+  "independent" : {
+    "color": "rgb(110,110,110)"
+  }
+}

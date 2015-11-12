@@ -96,18 +96,14 @@ function scrollingFunction(event) {
 }
 function calculateCollision(x,z) {
     var temp = 0;
-    console.log(x,z);
     for(var i = 0; i < minimap.length-1; i++) {
-        // if(i != minimap.length -1) {
-            var stX = minimap[i].SPX;
-            var stZ = minimap[i].SPZ - 700;
-            if(Math.abs(x - minimap[i].width/2 - stX) <  minimap[i].width/2 + 20
-                && Math.abs(z - stZ) < minimap[i].length/2 + 20) {
-                temp++;
-            }
-        //}
+        var stX = minimap[i].SPX;
+        var stZ = minimap[i].SPZ - 700;
+        if(Math.abs(x - minimap[i].width/2 - stX) <  minimap[i].width/2 + 20
+            && Math.abs(z - stZ) < minimap[i].length/2 + 20) {
+            temp++;
+        }
     }
-    console.log(temp);
     if(temp==0) return true;
     else return false;
 }
@@ -115,12 +111,14 @@ function calculateMap(minimap) {
     var minimap1 = [];
     for(var i = 0; i < minimap.length; i++) {
         var temp = {};
-
     }
 }
+
+
+
+
 function createMinimapSmall(minimap) {
     for(var i = 0; i < minimap.length; i++) {
-
     }
 }
 
