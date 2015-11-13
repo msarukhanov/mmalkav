@@ -8,6 +8,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use('/favicon.ico', express.static('./data/favicon.ico'));
+
 app.set('json spaces', 2);
 
 require('middleware/routes.js')(app, fs);
