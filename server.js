@@ -10,10 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-//
-//path.join(process.cwd(), 'index.html')
-//
-//path.join(process.cwd(), 'data/favicon.ico')
 
 app.use('/favicon.ico', express.static('./data/favicon.ico'));
 
