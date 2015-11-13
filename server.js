@@ -3,7 +3,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var app = express();
 
-var port = process.env.PORT || 901;
+var port = parseInt(process.env.PORT) || 901;
 
 app.use(express.static(__dirname + '/data'));
 app.use(bodyParser.json());
