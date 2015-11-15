@@ -21,6 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
-    "body-parser": "^1.4.28"
+    "body-parser": "^1.4.28",
+    "mongoose": "^4.2.5",
+    "mongoose-geojson-schema": "0.0.2"
   }
 }

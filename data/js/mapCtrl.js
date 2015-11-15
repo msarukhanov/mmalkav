@@ -1,10 +1,21 @@
-$.ajax({method: "GET", url: "/getRegions"}).done( function( data ) {
+    // $.ajax({ method: "POST", url: "/getRegionsOne", data: {
+    //     'regionID': '2'
+    // }}).done(function (data) {
+    //     console.log(data);
+    // });
 
-    var regions = data;
+$.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
+    var regions = {    
+        "type": "FeatureCollection",
+        "features": data
+    };
 
     var map = L.map('map', {
         crs: L.CRS.Simple
-    }).setView([-800, 800], 0);
+    }).setView([-1250, 700], 1);
+
+    map.dragging.disable();
+    map.scrollWheelZoom.disable();
 
     map.on({
         zoomend: function() {
@@ -13,13 +24,10 @@ $.ajax({method: "GET", url: "/getRegions"}).done( function( data ) {
     });
 
     $.ajax({method: "GET", url: "/getFactions"}).done(function (data) {
-
         var factions = data;
-
         $.ajax({method: "GET", url: "/getCampaignInfo"}).done(function (data) {
 
             var campaignInfo = data;
-
             var geojson = L.geoJson(regions, {
                 style: campaignInfo,
                 onEachFeature: onEachFeature
@@ -104,7 +112,8 @@ $.ajax({method: "GET", url: "/getRegions"}).done( function( data ) {
             function updateMapInfo(region_id, region_owner) {
                 $.ajax({
                     method: "POST", url: "/setCampaignInfo", data: {
-                        'id': region_id, 'country': region_owner
+                        'id': region_id, 
+                        'country': region_owner
                     }
                 }).done(function (data) {
                     campaignInfo[region_id] = region_owner;
