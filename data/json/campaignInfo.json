@@ -1,708 +1,2826 @@
-{
-	"1": "ireland",
-	"2": "ireland",
-	"3": "ireland",
-	"4": "ireland",
-	"5": "ireland",
-	"6": "sweden",
-	"7": "ireland",
-	"8": "ireland",
-	"9": "ireland",
-	"10": "england",
-	"11": "england",
-	"12": "england",
-	"13": "ireland",
-	"14": "ireland",
-	"15": "england",
-	"16": "england",
-	"17": "england",
-	"18": "wales",
-	"19": "wales",
-	"20": "wales",
-	"21": "england",
-	"22": "england",
-	"23": "england",
-	"24": "england",
-	"25": "england",
-	"26": "england",
-	"27": "england",
-	"28": "england",
-	"29": "england",
-	"30": "england",
-	"31": "england",
-	"32": "england",
-	"33": "england",
-	"34": "denmark",
-	"35": "scotland",
-	"36": "scotland",
-	"37": "scotland",
-	"38": "scotland",
-	"39": "scotland",
-	"40": "scotland",
-	"41": "scotland",
-	"42": "scotland",
-	"43": "scotland",
-	"44": "scotland",
-	"45": "scotland",
-	"46": "scotland",
-	"47": "scotland",
-	"48": "scotland",
-	"49": "scotland",
-	"50": "scotland",
-	"51": "england",
-	"52": "england",
-	"53": "england",
-	"54": "england",
-	"55": "england",
-	"56": "england",
-	"57": "england",
-	"58": "england",
-	"59": "england",
-	"60": "wales",
-	"61": "england",
-	"62": "england",
-	"63": "england",
-	"64": "wales",
-	"65": "wales",
-	"66": "england",
-	"67": "england",
-	"68": "england",
-	"69": "england",
-	"70": "england",
-	"71": "england",
-	"72": "england",
-	"73": "england",
-	"74": "hre",
-	"75": "england",
-	"76": "hre",
-	"77": "hre",
-	"78": "hre",
-	"79": "hre",
-	"80": "hre",
-	"81": "hre",
-	"82": "hre",
-	"83": "hre",
-	"84": "hre",
-	"85": "hre",
-	"86": "hre",
-	"87": "hre",
-	"88": "hre",
-	"89": "hre",
-	"90": "hre",
-	"91": "hre",
-	"92": "hre",
-	"93": "hre",
-	"94": "hre",
-	"95": "england",
-	"96": "england",
-	"97": "england",
-	"98": "england",
-	"99": "england",
-	"100": "england",
-	"101": "england",
-	"102": "france",
-	"103": "france",
-	"104": "france",
-	"105": "france",
-	"106": "france",
-	"107": "france",
-	"108": "england",
-	"109": "france",
-	"110": "france",
-	"111": "england",
-	"112": "france",
-	"113": "france",
-	"114": "france",
-	"115": "hre",
-	"116": "hre",
-	"117": "hre",
-	"118": "hre",
-	"119": "hre",
-	"120": "hre",
-	"121": "hre",
-	"122": "hre",
-	"123": "hre",
-	"124": "hre",
-	"125": "hre",
-	"126": "hre",
-	"127": "hre",
-	"128": "hre",
-	"129": "hre",
-	"130": "france",
-	"131": "france",
-	"132": "france",
-	"133": "france",
-	"134": "france",
-	"135": "france",
-	"136": "france",
-	"137": "france",
-	"138": "france",
-	"139": "france",
-	"140": "france",
-	"141": "france",
-	"142": "france",
-	"143": "france",
-	"144": "france",
-	"145": "france",
-	"146": "france",
-	"147": "france",
-	"148": "france",
-	"149": "navarra",
-	"150": "navarra",
-	"151": "navarra",
-	"152": "navarra",
-	"153": "navarra",
-	"154": "castile",
-	"155": "leon",
-	"156": "leon",
-	"157": "leon",
-	"158": "portugal",
-	"159": "portugal",
-	"160": "mauritania",
-	"161": "mauritania",
-	"162": "mauritania",
-	"163": "mauritania",
-	"164": "mauritania",
-	"165": "mauritania",
-	"166": "mauritania",
-	"167": "mauritania",
-	"168": "mauritania",
-	"169": "mauritania",
-	"170": "mauritania",
-	"171": "mauritania",
-	"172": "mauritania",
-	"173": "mauritania",
-	"174": "mauritania",
-	"175": "mauritania",
-	"176": "mauritania",
-	"177": "mauritania",
-	"178": "mauritania",
-	"179": "mauritania",
-	"180": "mauritania",
-	"181": "mauritania",
-	"182": "mauritania",
-	"183": "mauritania",
-	"184": "mauritania",
-	"185": "mauritania",
-	"186": "mauritania",
-	"187": "portugal",
-	"188": "portugal",
-	"189": "leon",
-	"190": "leon",
-	"191": "leon",
-	"192": "castile",
-	"193": "mauritania",
-	"194": "mauritania",
-	"195": "mauritania",
-	"196": "mauritania",
-	"197": "mauritania",
-	"198": "castile",
-	"199": "castile",
-	"200": "castile",
-	"201": "navarra",
-	"202": "aragon",
-	"203": "aragon",
-	"204": "aragon",
-	"205": "aragon",
-	"206": "aragon",
-	"207": "aragon",
-	"208": "navarra",
-	"209": "toulouse",
-	"210": "toulouse",
-	"211": "toulouse",
-	"212": "france",
-	"213": "toulouse",
-	"214": "toulouse",
-	"215": "france",
-	"216": "france",
-	"217": "france",
-	"218": "france",
-	"219": "france",
-	"220": "france",
-	"221": "burgundy",
-	"222": "france",
-	"223": "france",
-	"224": "france",
-	"225": "france",
-	"226": "france",
-	"227": "france",
-	"228": "burgundy",
-	"229": "burgundy",
-	"230": "burgundy",
-	"231": "milan",
-	"232": "milan",
-	"233": "milan",
-	"234": "milan",
-	"235": "milan",
-	"236": "milan",
-	"237": "burgundy",
-	"238": "hre",
-	"239": "burgundy",
-	"240": "france",
-	"241": "hre",
-	"242": "hre",
-	"243": "rome",
-	"244": "hre",
-	"245": "hre",
-	"246": "hre",
-	"247": "hre",
-	"248": "hre",
-	"249": "hre",
-	"250": "hre",
-	"251": "hre",
-	"252": "hre",
-	"253": "hre",
-	"254": "hre",
-	"255": "hre",
-	"256": "hre",
-	"257": "hre",
-	"258": "hre",
-	"259": "hre",
-	"260": "hre",
-	"261": "hre",
-	"262": "hre",
-	"263": "denmark",
-	"264": "denmark",
-	"265": "denmark",
-	"266": "denmark",
-	"267": "denmark",
-	"268": "norway",
-	"269": "norway",
-	"270": "norway",
-	"271": "norway",
-	"272": "norway",
-	"273": "norway",
-	"274": "norway",
-	"275": "norway",
-	"276": "norway",
-	"277": "norway",
-	"291": "sweden",
-	"292": "sweden",
-	"293": "sweden",
-	"294": "sweden",
-	"295": "sweden",
-	"296": "norway",
-	"297": "sweden",
-	"298": "sweden",
-	"302": "denmark",
-	"303": "denmark",
-	"304": "hre",
-	"305": "hre",
-	"306": "hre",
-	"307": "hre",
-	"308": "hre",
-	"309": "hre",
-	"310": "hre",
-	"311": "hre",
-	"312": "hre",
-	"313": "hre",
-	"314": "hre",
-	"315": "hre",
-	"316": "hre",
-	"317": "venice",
-	"318": "milan",
-	"319": "venice",
-	"320": "milan",
-	"321": "milan",
-	"322": "venice",
-	"323": "bologna",
-	"324": "milan",
-	"325": "mauritania",
-	"326": "mauritania",
-	"327": "bologna",
-	"328": "bologna",
-	"329": "bologna",
-	"330": "bologna",
-	"331": "rome",
-	"332": "rome",
-	"333": "rome",
-	"334": "napoli",
-	"335": "napoli",
-	"336": "napoli",
-	"337": "napoli",
-	"338": "napoli",
-	"339": "napoli",
-	"340": "napoli",
-	"341": "napoli",
-	"342": "napoli",
-	"343": "napoli",
-	"344": "napoli",
-	"345": "napoli",
-	"346": "napoli",
-	"347": "napoli",
-	"348": "napoli",
-	"349": "rome",
-	"350": "bologna",
-	"351": "bologna",
-	"352": "bologna",
-	"353": "venice",
-	"354": "venice",
-	"355": "venice",
-	"356": "venice",
-	"357": "venice",
-	"358": "venice",
-	"359": "hre",
-	"360": "hre",
-	"361": "hre",
-	"362": "hre",
-	"363": "hre",
-	"364": "hre",
-	"365": "hre",
-	"366": "hre",
-	"367": "hre",
-	"368": "poland",
-	"369": "poland",
-	"370": "poland",
-	"371": "poland",
-	"372": "lithuania",
-	"373": "lithuania",
-	"374": "lithuania",
-	"375": "lithuania",
-	"376": "lithuania",
-	"377": "lithuania",
-	"378": "lithuania",
-	"379": "lithuania",
-	"380": "lithuania",
-	"404": "russia",
-	"408": "russia",
-	"409": "russia",
-	"410": "russia",
-	"411": "russia",
-	"412": "russia",
-	"413": "russia",
-	"414": "russia",
-	"415": "russia",
-	"416": "lithuania",
-	"417": "russia",
-	"418": "lithuania",
-	"419": "russia",
-	"420": "lithuania",
-	"421": "lithuania",
-	"422": "lithuania",
-	"423": "lithuania",
-	"424": "lithuania",
-	"425": "independent",
-	"426": "lithuania",
-	"427": "poland",
-	"428": "poland",
-	"429": "poland",
-	"430": "hre",
-	"431": "poland",
-	"432": "poland",
-	"433": "poland",
-	"434": "poland",
-	"435": "poland",
-	"436": "poland",
-	"437": "hre",
-	"438": "poland",
-	"439": "hre",
-	"440": "poland",
-	"441": "poland",
-	"442": "poland",
-	"443": "poland",
-	"444": "hungary",
-	"445": "poland",
-	"446": "hre",
-	"447": "hre",
-	"448": "hre",
-	"449": "hre",
-	"450": "hungary",
-	"451": "hungary",
-	"452": "hungary",
-	"453": "hungary",
-	"454": "hungary",
-	"455": "hre",
-	"456": "hre",
-	"457": "venice",
-	"458": "venice",
-	"459": "independent",
-	"460": "independent",
-	"461": "independent",
-	"462": "independent",
-	"463": "independent",
-	"464": "independent",
-	"465": "independent",
-	"466": "independent",
-	"467": "independent",
-	"468": "byzantium",
-	"469": "byzantium",
-	"470": "byzantium",
-	"471": "byzantium",
-	"472": "byzantium",
-	"473": "byzantium",
-	"474": "byzantium",
-	"475": "byzantium",
-	"476": "byzantium",
-	"477": "byzantium",
-	"478": "byzantium",
-	"479": "byzantium",
-	"480": "byzantium",
-	"481": "byzantium",
-	"482": "byzantium",
-	"483": "byzantium",
-	"484": "byzantium",
-	"485": "byzantium",
-	"486": "byzantium",
-	"487": "byzantium",
-	"488": "byzantium",
-	"489": "byzantium",
-	"490": "byzantium",
-	"491": "byzantium",
-	"492": "byzantium",
-	"493": "byzantium",
-	"494": "byzantium",
-	"495": "byzantium",
-	"496": "byzantium",
-	"497": "byzantium",
-	"498": "byzantium",
-	"499": "byzantium",
-	"500": "byzantium",
-	"501": "byzantium",
-	"502": "byzantium",
-	"503": "byzantium",
-	"504": "byzantium",
-	"505": "byzantium",
-	"506": "byzantium",
-	"507": "byzantium",
-	"508": "byzantium",
-	"509": "byzantium",
-	"510": "cumans",
-	"511": "cumans",
-	"512": "cumans",
-	"513": "cumans",
-	"514": "cumans",
-	"515": "hungary",
-	"516": "hungary",
-	"517": "hungary",
-	"518": "hungary",
-	"519": "hungary",
-	"520": "hungary",
-	"521": "hungary",
-	"522": "hungary",
-	"523": "hungary",
-	"524": "hungary",
-	"525": "poland",
-	"526": "poland",
-	"527": "poland",
-	"528": "poland",
-	"529": "poland",
-	"530": "poland",
-	"531": "poland",
-	"532": "poland",
-	"533": "hungary",
-	"534": "independent",
-	"535": "russia",
-	"536": "russia",
-	"537": "hungary",
-	"538": "hungary",
-	"539": "hungary",
-	"540": "hungary",
-	"541": "cumans",
-	"542": "cumans",
-	"543": "cumans",
-	"544": "cumans",
-	"545": "hungary",
-	"546": "russia",
-	"547": "russia",
-	"548": "russia",
-	"549": "russia",
-	"550": "lithuania",
-	"551": "russia",
-	"552": "russia",
-	"553": "russia",
-	"554": "russia",
-	"555": "russia",
-	"556": "cumans",
-	"557": "cumans",
-	"558": "cumans",
-	"559": "byzantium",
-	"560": "byzantium",
-	"561": "byzantium",
-	"562": "byzantium",
-	"563": "cumans",
-	"564": "cumans",
-	"565": "cumans",
-	"566": "cumans",
-	"567": "russia",
-	"568": "russia",
-	"569": "russia",
-	"570": "russia",
-	"571": "russia",
-	"572": "russia",
-	"573": "russia",
-	"574": "russia",
-	"575": "russia",
-	"576": "russia",
-	"577": "russia",
-	"578": "russia",
-	"580": "russia",
-	"581": "russia",
-	"582": "russia",
-	"583": "russia",
-	"584": "russia",
-	"585": "russia",
-	"587": "russia",
-	"600": "turks",
-	"601": "turks",
-	"662": "kwarezm",
-	"667": "turks",
-	"668": "turks",
-	"669": "turks",
-	"670": "turks",
-	"671": "turks",
-	"672": "turks",
-	"673": "turks",
-	"676": "turks",
-	"677": "turks",
-	"678": "turks",
-	"679": "turks",
-	"680": "turks",
-	"681": "turks",
-	"682": "turks",
-	"683": "turks",
-	"684": "turks",
-	"685": "turks",
-	"686": "turks",
-	"687": "turks",
-	"699": "turks",
-	"701": "turks",
-	"702": "turks",
-	"703": "turks",
-	"704": "turks",
-	"705": "turks",
-	"706": "turks",
-	"707": "turks",
-	"708": "egypt",
-	"709": "egypt",
-	"710": "egypt",
-	"718": "egypt",
-	"719": "egypt",
-	"720": "egypt",
-	"721": "egypt",
-	"722": "egypt",
-	"723": "egypt",
-	"724": "egypt",
-	"725": "egypt",
-	"726": "egypt",
-	"727": "egypt",
-	"728": "egypt",
-	"729": "egypt",
-	"730": "egypt",
-	"731": "egypt",
-	"732": "egypt",
-	"733": "egypt",
-	"734": "turks",
-	"735": "armenia",
-	"736": "turks",
-	"737": "turks",
-	"738": "turks",
-	"739": "byzantium",
-	"740": "byzantium",
-	"741": "byzantium",
-	"742": "byzantium",
-	"743": "byzantium",
-	"744": "byzantium",
-	"745": "byzantium",
-	"746": "byzantium",
-	"747": "byzantium",
-	"748": "byzantium",
-	"749": "byzantium",
-	"750": "byzantium",
-	"751": "turks",
-	"752": "turks",
-	"753": "turks",
-	"754": "byzantium",
-	"755": "byzantium",
-	"756": "byzantium",
-	"757": "byzantium",
-	"758": "turks",
-	"759": "turks",
-	"760": "turks",
-	"761": "armenia",
-	"762": "armenia",
-	"763": "turks",
-	"764": "turks",
-	"765": "egypt",
-	"766": "egypt",
-	"767": "egypt",
-	"768": "egypt",
-	"769": "egypt",
-	"770": "egypt",
-	"771": "egypt",
-	"772": "egypt",
-	"773": "egypt",
-	"774": "egypt",
-	"775": "egypt",
-	"776": "egypt",
-	"777": "egypt",
-	"778": "egypt",
-	"779": "egypt",
-	"780": "egypt",
-	"781": "egypt",
-	"782": "egypt",
-	"783": "egypt",
-	"784": "egypt",
-	"785": "egypt",
-	"786": "egypt",
-	"787": "egypt",
-	"788": "egypt",
-	"789": "egypt",
-	"790": "egypt",
-	"791": "egypt",
-	"792": "egypt",
-	"793": "egypt",
-	"794": "egypt",
-	"795": "egypt",
-	"796": "egypt",
-	"797": "egypt",
-	"798": "egypt",
-	"799": "egypt",
-	"800": "egypt",
-	"801": "egypt",
-	"802": "egypt",
-	"803": "egypt",
-	"804": "egypt",
-	"805": "egypt",
-	"806": "egypt",
-	"807": "egypt",
-	"808": "egypt",
-	"809": "egypt",
-	"810": "mauritania",
-	"811": "mauritania",
-	"812": "venice",
-	"813": "mauritania",
-	"814": "mauritania",
-	"815": "mauritania",
-	"816": "mauritania",
-	"817": "mauritania",
-	"818": "mauritania",
-	"819": "mauritania",
-	"820": "mauritania",
-	"821": "mauritania",
-	"822": "mauritania",
-	"823": "mauritania",
-	"824": "mauritania",
-	"825": "mauritania",
-	"826": "byzantium",
-	"827": "byzantium",
-	"828": "mauritania",
-	"829": "mauritania",
-	"830": "mauritania",
-	"831": "mauritania",
-	"832": "mauritania",
-	"833": "mauritania",
-	"834": "mauritania",
-	"835": "mauritania",
-	"836": "mauritania",
-	"837": "mauritania",
-	"838": "mauritania",
-	"839": "mauritania",
-	"840": "mauritania",
-	"841": "mauritania",
-	"842": "mauritania",
-	"843": "mauritania",
-	"844": "mauritania",
-	"848": "hre",
-	"851": "napoli",
-	"929": "napoli"
-}
+[
+	{
+		"id": "1",
+		"owner": "ireland"
+	},
+	{
+		"id": "2",
+		"owner": "ireland"
+	},
+	{
+		"id": "3",
+		"owner": "ireland"
+	},
+	{
+		"id": "4",
+		"owner": "ireland"
+	},
+	{
+		"id": "5",
+		"owner": "ireland"
+	},
+	{
+		"id": "6",
+		"owner": "sweden"
+	},
+	{
+		"id": "7",
+		"owner": "ireland"
+	},
+	{
+		"id": "8",
+		"owner": "ireland"
+	},
+	{
+		"id": "9",
+		"owner": "ireland"
+	},
+	{
+		"id": "10",
+		"owner": "england"
+	},
+	{
+		"id": "11",
+		"owner": "england"
+	},
+	{
+		"id": "12",
+		"owner": "england"
+	},
+	{
+		"id": "13",
+		"owner": "ireland"
+	},
+	{
+		"id": "14",
+		"owner": "ireland"
+	},
+	{
+		"id": "15",
+		"owner": "england"
+	},
+	{
+		"id": "16",
+		"owner": "england"
+	},
+	{
+		"id": "17",
+		"owner": "england"
+	},
+	{
+		"id": "18",
+		"owner": "wales"
+	},
+	{
+		"id": "19",
+		"owner": "wales"
+	},
+	{
+		"id": "20",
+		"owner": "wales"
+	},
+	{
+		"id": "21",
+		"owner": "england"
+	},
+	{
+		"id": "22",
+		"owner": "england"
+	},
+	{
+		"id": "23",
+		"owner": "england"
+	},
+	{
+		"id": "24",
+		"owner": "england"
+	},
+	{
+		"id": "25",
+		"owner": "england"
+	},
+	{
+		"id": "26",
+		"owner": "england"
+	},
+	{
+		"id": "27",
+		"owner": "england"
+	},
+	{
+		"id": "28",
+		"owner": "england"
+	},
+	{
+		"id": "29",
+		"owner": "england"
+	},
+	{
+		"id": "30",
+		"owner": "england"
+	},
+	{
+		"id": "31",
+		"owner": "england"
+	},
+	{
+		"id": "32",
+		"owner": "england"
+	},
+	{
+		"id": "33",
+		"owner": "england"
+	},
+	{
+		"id": "34",
+		"owner": "denmark"
+	},
+	{
+		"id": "35",
+		"owner": "scotland"
+	},
+	{
+		"id": "36",
+		"owner": "scotland"
+	},
+	{
+		"id": "37",
+		"owner": "scotland"
+	},
+	{
+		"id": "38",
+		"owner": "scotland"
+	},
+	{
+		"id": "39",
+		"owner": "scotland"
+	},
+	{
+		"id": "40",
+		"owner": "scotland"
+	},
+	{
+		"id": "41",
+		"owner": "scotland"
+	},
+	{
+		"id": "42",
+		"owner": "scotland"
+	},
+	{
+		"id": "43",
+		"owner": "scotland"
+	},
+	{
+		"id": "44",
+		"owner": "scotland"
+	},
+	{
+		"id": "45",
+		"owner": "scotland"
+	},
+	{
+		"id": "46",
+		"owner": "scotland"
+	},
+	{
+		"id": "47",
+		"owner": "scotland"
+	},
+	{
+		"id": "48",
+		"owner": "scotland"
+	},
+	{
+		"id": "49",
+		"owner": "scotland"
+	},
+	{
+		"id": "50",
+		"owner": "scotland"
+	},
+	{
+		"id": "51",
+		"owner": "england"
+	},
+	{
+		"id": "52",
+		"owner": "england"
+	},
+	{
+		"id": "53",
+		"owner": "england"
+	},
+	{
+		"id": "54",
+		"owner": "england"
+	},
+	{
+		"id": "55",
+		"owner": "england"
+	},
+	{
+		"id": "56",
+		"owner": "england"
+	},
+	{
+		"id": "57",
+		"owner": "england"
+	},
+	{
+		"id": "58",
+		"owner": "england"
+	},
+	{
+		"id": "59",
+		"owner": "england"
+	},
+	{
+		"id": "60",
+		"owner": "wales"
+	},
+	{
+		"id": "61",
+		"owner": "england"
+	},
+	{
+		"id": "62",
+		"owner": "england"
+	},
+	{
+		"id": "63",
+		"owner": "england"
+	},
+	{
+		"id": "64",
+		"owner": "wales"
+	},
+	{
+		"id": "65",
+		"owner": "wales"
+	},
+	{
+		"id": "66",
+		"owner": "england"
+	},
+	{
+		"id": "67",
+		"owner": "england"
+	},
+	{
+		"id": "68",
+		"owner": "england"
+	},
+	{
+		"id": "69",
+		"owner": "england"
+	},
+	{
+		"id": "70",
+		"owner": "england"
+	},
+	{
+		"id": "71",
+		"owner": "england"
+	},
+	{
+		"id": "72",
+		"owner": "england"
+	},
+	{
+		"id": "73",
+		"owner": "england"
+	},
+	{
+		"id": "74",
+		"owner": "hre"
+	},
+	{
+		"id": "75",
+		"owner": "england"
+	},
+	{
+		"id": "76",
+		"owner": "hre"
+	},
+	{
+		"id": "77",
+		"owner": "hre"
+	},
+	{
+		"id": "78",
+		"owner": "hre"
+	},
+	{
+		"id": "79",
+		"owner": "hre"
+	},
+	{
+		"id": "80",
+		"owner": "hre"
+	},
+	{
+		"id": "81",
+		"owner": "hre"
+	},
+	{
+		"id": "82",
+		"owner": "hre"
+	},
+	{
+		"id": "83",
+		"owner": "hre"
+	},
+	{
+		"id": "84",
+		"owner": "hre"
+	},
+	{
+		"id": "85",
+		"owner": "hre"
+	},
+	{
+		"id": "86",
+		"owner": "hre"
+	},
+	{
+		"id": "87",
+		"owner": "hre"
+	},
+	{
+		"id": "88",
+		"owner": "hre"
+	},
+	{
+		"id": "89",
+		"owner": "hre"
+	},
+	{
+		"id": "90",
+		"owner": "hre"
+	},
+	{
+		"id": "91",
+		"owner": "hre"
+	},
+	{
+		"id": "92",
+		"owner": "hre"
+	},
+	{
+		"id": "93",
+		"owner": "hre"
+	},
+	{
+		"id": "94",
+		"owner": "hre"
+	},
+	{
+		"id": "95",
+		"owner": "england"
+	},
+	{
+		"id": "96",
+		"owner": "england"
+	},
+	{
+		"id": "97",
+		"owner": "england"
+	},
+	{
+		"id": "98",
+		"owner": "england"
+	},
+	{
+		"id": "99",
+		"owner": "england"
+	},
+	{
+		"id": "100",
+		"owner": "england"
+	},
+	{
+		"id": "101",
+		"owner": "england"
+	},
+	{
+		"id": "102",
+		"owner": "france"
+	},
+	{
+		"id": "103",
+		"owner": "france"
+	},
+	{
+		"id": "104",
+		"owner": "france"
+	},
+	{
+		"id": "105",
+		"owner": "france"
+	},
+	{
+		"id": "106",
+		"owner": "france"
+	},
+	{
+		"id": "107",
+		"owner": "france"
+	},
+	{
+		"id": "108",
+		"owner": "england"
+	},
+	{
+		"id": "109",
+		"owner": "france"
+	},
+	{
+		"id": "110",
+		"owner": "france"
+	},
+	{
+		"id": "111",
+		"owner": "england"
+	},
+	{
+		"id": "112",
+		"owner": "france"
+	},
+	{
+		"id": "113",
+		"owner": "france"
+	},
+	{
+		"id": "114",
+		"owner": "france"
+	},
+	{
+		"id": "115",
+		"owner": "hre"
+	},
+	{
+		"id": "116",
+		"owner": "hre"
+	},
+	{
+		"id": "117",
+		"owner": "hre"
+	},
+	{
+		"id": "118",
+		"owner": "hre"
+	},
+	{
+		"id": "119",
+		"owner": "hre"
+	},
+	{
+		"id": "120",
+		"owner": "hre"
+	},
+	{
+		"id": "121",
+		"owner": "hre"
+	},
+	{
+		"id": "122",
+		"owner": "hre"
+	},
+	{
+		"id": "123",
+		"owner": "hre"
+	},
+	{
+		"id": "124",
+		"owner": "hre"
+	},
+	{
+		"id": "125",
+		"owner": "hre"
+	},
+	{
+		"id": "126",
+		"owner": "hre"
+	},
+	{
+		"id": "127",
+		"owner": "hre"
+	},
+	{
+		"id": "128",
+		"owner": "hre"
+	},
+	{
+		"id": "129",
+		"owner": "hre"
+	},
+	{
+		"id": "130",
+		"owner": "france"
+	},
+	{
+		"id": "131",
+		"owner": "france"
+	},
+	{
+		"id": "132",
+		"owner": "france"
+	},
+	{
+		"id": "133",
+		"owner": "france"
+	},
+	{
+		"id": "134",
+		"owner": "france"
+	},
+	{
+		"id": "135",
+		"owner": "france"
+	},
+	{
+		"id": "136",
+		"owner": "france"
+	},
+	{
+		"id": "137",
+		"owner": "france"
+	},
+	{
+		"id": "138",
+		"owner": "france"
+	},
+	{
+		"id": "139",
+		"owner": "france"
+	},
+	{
+		"id": "140",
+		"owner": "france"
+	},
+	{
+		"id": "141",
+		"owner": "france"
+	},
+	{
+		"id": "142",
+		"owner": "france"
+	},
+	{
+		"id": "143",
+		"owner": "france"
+	},
+	{
+		"id": "144",
+		"owner": "france"
+	},
+	{
+		"id": "145",
+		"owner": "france"
+	},
+	{
+		"id": "146",
+		"owner": "france"
+	},
+	{
+		"id": "147",
+		"owner": "france"
+	},
+	{
+		"id": "148",
+		"owner": "france"
+	},
+	{
+		"id": "149",
+		"owner": "navarra"
+	},
+	{
+		"id": "150",
+		"owner": "navarra"
+	},
+	{
+		"id": "151",
+		"owner": "navarra"
+	},
+	{
+		"id": "152",
+		"owner": "navarra"
+	},
+	{
+		"id": "153",
+		"owner": "navarra"
+	},
+	{
+		"id": "154",
+		"owner": "castile"
+	},
+	{
+		"id": "155",
+		"owner": "leon"
+	},
+	{
+		"id": "156",
+		"owner": "leon"
+	},
+	{
+		"id": "157",
+		"owner": "leon"
+	},
+	{
+		"id": "158",
+		"owner": "portugal"
+	},
+	{
+		"id": "159",
+		"owner": "portugal"
+	},
+	{
+		"id": "160",
+		"owner": "mauritania"
+	},
+	{
+		"id": "161",
+		"owner": "mauritania"
+	},
+	{
+		"id": "162",
+		"owner": "mauritania"
+	},
+	{
+		"id": "163",
+		"owner": "mauritania"
+	},
+	{
+		"id": "164",
+		"owner": "mauritania"
+	},
+	{
+		"id": "165",
+		"owner": "mauritania"
+	},
+	{
+		"id": "166",
+		"owner": "mauritania"
+	},
+	{
+		"id": "167",
+		"owner": "mauritania"
+	},
+	{
+		"id": "168",
+		"owner": "mauritania"
+	},
+	{
+		"id": "169",
+		"owner": "mauritania"
+	},
+	{
+		"id": "170",
+		"owner": "mauritania"
+	},
+	{
+		"id": "171",
+		"owner": "mauritania"
+	},
+	{
+		"id": "172",
+		"owner": "mauritania"
+	},
+	{
+		"id": "173",
+		"owner": "mauritania"
+	},
+	{
+		"id": "174",
+		"owner": "mauritania"
+	},
+	{
+		"id": "175",
+		"owner": "mauritania"
+	},
+	{
+		"id": "176",
+		"owner": "mauritania"
+	},
+	{
+		"id": "177",
+		"owner": "mauritania"
+	},
+	{
+		"id": "178",
+		"owner": "mauritania"
+	},
+	{
+		"id": "179",
+		"owner": "mauritania"
+	},
+	{
+		"id": "180",
+		"owner": "mauritania"
+	},
+	{
+		"id": "181",
+		"owner": "mauritania"
+	},
+	{
+		"id": "182",
+		"owner": "mauritania"
+	},
+	{
+		"id": "183",
+		"owner": "mauritania"
+	},
+	{
+		"id": "184",
+		"owner": "mauritania"
+	},
+	{
+		"id": "185",
+		"owner": "mauritania"
+	},
+	{
+		"id": "186",
+		"owner": "mauritania"
+	},
+	{
+		"id": "187",
+		"owner": "portugal"
+	},
+	{
+		"id": "188",
+		"owner": "portugal"
+	},
+	{
+		"id": "189",
+		"owner": "leon"
+	},
+	{
+		"id": "190",
+		"owner": "leon"
+	},
+	{
+		"id": "191",
+		"owner": "leon"
+	},
+	{
+		"id": "192",
+		"owner": "castile"
+	},
+	{
+		"id": "193",
+		"owner": "mauritania"
+	},
+	{
+		"id": "194",
+		"owner": "mauritania"
+	},
+	{
+		"id": "195",
+		"owner": "mauritania"
+	},
+	{
+		"id": "196",
+		"owner": "mauritania"
+	},
+	{
+		"id": "197",
+		"owner": "mauritania"
+	},
+	{
+		"id": "198",
+		"owner": "castile"
+	},
+	{
+		"id": "199",
+		"owner": "castile"
+	},
+	{
+		"id": "200",
+		"owner": "castile"
+	},
+	{
+		"id": "201",
+		"owner": "navarra"
+	},
+	{
+		"id": "202",
+		"owner": "aragon"
+	},
+	{
+		"id": "203",
+		"owner": "aragon"
+	},
+	{
+		"id": "204",
+		"owner": "aragon"
+	},
+	{
+		"id": "205",
+		"owner": "aragon"
+	},
+	{
+		"id": "206",
+		"owner": "aragon"
+	},
+	{
+		"id": "207",
+		"owner": "aragon"
+	},
+	{
+		"id": "208",
+		"owner": "navarra"
+	},
+	{
+		"id": "209",
+		"owner": "toulouse"
+	},
+	{
+		"id": "210",
+		"owner": "toulouse"
+	},
+	{
+		"id": "211",
+		"owner": "toulouse"
+	},
+	{
+		"id": "212",
+		"owner": "france"
+	},
+	{
+		"id": "213",
+		"owner": "toulouse"
+	},
+	{
+		"id": "214",
+		"owner": "toulouse"
+	},
+	{
+		"id": "215",
+		"owner": "france"
+	},
+	{
+		"id": "216",
+		"owner": "france"
+	},
+	{
+		"id": "217",
+		"owner": "france"
+	},
+	{
+		"id": "218",
+		"owner": "france"
+	},
+	{
+		"id": "219",
+		"owner": "france"
+	},
+	{
+		"id": "220",
+		"owner": "france"
+	},
+	{
+		"id": "221",
+		"owner": "burgundy"
+	},
+	{
+		"id": "222",
+		"owner": "france"
+	},
+	{
+		"id": "223",
+		"owner": "france"
+	},
+	{
+		"id": "224",
+		"owner": "france"
+	},
+	{
+		"id": "225",
+		"owner": "france"
+	},
+	{
+		"id": "226",
+		"owner": "france"
+	},
+	{
+		"id": "227",
+		"owner": "france"
+	},
+	{
+		"id": "228",
+		"owner": "burgundy"
+	},
+	{
+		"id": "229",
+		"owner": "burgundy"
+	},
+	{
+		"id": "230",
+		"owner": "burgundy"
+	},
+	{
+		"id": "231",
+		"owner": "milan"
+	},
+	{
+		"id": "232",
+		"owner": "milan"
+	},
+	{
+		"id": "233",
+		"owner": "milan"
+	},
+	{
+		"id": "234",
+		"owner": "milan"
+	},
+	{
+		"id": "235",
+		"owner": "milan"
+	},
+	{
+		"id": "236",
+		"owner": "milan"
+	},
+	{
+		"id": "237",
+		"owner": "burgundy"
+	},
+	{
+		"id": "238",
+		"owner": "hre"
+	},
+	{
+		"id": "239",
+		"owner": "burgundy"
+	},
+	{
+		"id": "240",
+		"owner": "france"
+	},
+	{
+		"id": "241",
+		"owner": "hre"
+	},
+	{
+		"id": "242",
+		"owner": "hre"
+	},
+	{
+		"id": "243",
+		"owner": "rome"
+	},
+	{
+		"id": "244",
+		"owner": "hre"
+	},
+	{
+		"id": "245",
+		"owner": "hre"
+	},
+	{
+		"id": "246",
+		"owner": "hre"
+	},
+	{
+		"id": "247",
+		"owner": "hre"
+	},
+	{
+		"id": "248",
+		"owner": "hre"
+	},
+	{
+		"id": "249",
+		"owner": "hre"
+	},
+	{
+		"id": "250",
+		"owner": "hre"
+	},
+	{
+		"id": "251",
+		"owner": "hre"
+	},
+	{
+		"id": "252",
+		"owner": "hre"
+	},
+	{
+		"id": "253",
+		"owner": "hre"
+	},
+	{
+		"id": "254",
+		"owner": "hre"
+	},
+	{
+		"id": "255",
+		"owner": "hre"
+	},
+	{
+		"id": "256",
+		"owner": "hre"
+	},
+	{
+		"id": "257",
+		"owner": "hre"
+	},
+	{
+		"id": "258",
+		"owner": "hre"
+	},
+	{
+		"id": "259",
+		"owner": "hre"
+	},
+	{
+		"id": "260",
+		"owner": "hre"
+	},
+	{
+		"id": "261",
+		"owner": "hre"
+	},
+	{
+		"id": "262",
+		"owner": "hre"
+	},
+	{
+		"id": "263",
+		"owner": "denmark"
+	},
+	{
+		"id": "264",
+		"owner": "denmark"
+	},
+	{
+		"id": "265",
+		"owner": "denmark"
+	},
+	{
+		"id": "266",
+		"owner": "denmark"
+	},
+	{
+		"id": "267",
+		"owner": "denmark"
+	},
+	{
+		"id": "268",
+		"owner": "norway"
+	},
+	{
+		"id": "269",
+		"owner": "norway"
+	},
+	{
+		"id": "270",
+		"owner": "norway"
+	},
+	{
+		"id": "271",
+		"owner": "norway"
+	},
+	{
+		"id": "272",
+		"owner": "norway"
+	},
+	{
+		"id": "273",
+		"owner": "norway"
+	},
+	{
+		"id": "274",
+		"owner": "norway"
+	},
+	{
+		"id": "275",
+		"owner": "norway"
+	},
+	{
+		"id": "276",
+		"owner": "norway"
+	},
+	{
+		"id": "277",
+		"owner": "norway"
+	},
+	{
+		"id": "291",
+		"owner": "sweden"
+	},
+	{
+		"id": "292",
+		"owner": "sweden"
+	},
+	{
+		"id": "293",
+		"owner": "sweden"
+	},
+	{
+		"id": "294",
+		"owner": "sweden"
+	},
+	{
+		"id": "295",
+		"owner": "sweden"
+	},
+	{
+		"id": "296",
+		"owner": "norway"
+	},
+	{
+		"id": "297",
+		"owner": "sweden"
+	},
+	{
+		"id": "298",
+		"owner": "sweden"
+	},
+	{
+		"id": "302",
+		"owner": "denmark"
+	},
+	{
+		"id": "303",
+		"owner": "denmark"
+	},
+	{
+		"id": "304",
+		"owner": "hre"
+	},
+	{
+		"id": "305",
+		"owner": "hre"
+	},
+	{
+		"id": "306",
+		"owner": "hre"
+	},
+	{
+		"id": "307",
+		"owner": "hre"
+	},
+	{
+		"id": "308",
+		"owner": "hre"
+	},
+	{
+		"id": "309",
+		"owner": "hre"
+	},
+	{
+		"id": "310",
+		"owner": "hre"
+	},
+	{
+		"id": "311",
+		"owner": "hre"
+	},
+	{
+		"id": "312",
+		"owner": "hre"
+	},
+	{
+		"id": "313",
+		"owner": "hre"
+	},
+	{
+		"id": "314",
+		"owner": "hre"
+	},
+	{
+		"id": "315",
+		"owner": "hre"
+	},
+	{
+		"id": "316",
+		"owner": "hre"
+	},
+	{
+		"id": "317",
+		"owner": "venice"
+	},
+	{
+		"id": "318",
+		"owner": "milan"
+	},
+	{
+		"id": "319",
+		"owner": "venice"
+	},
+	{
+		"id": "320",
+		"owner": "milan"
+	},
+	{
+		"id": "321",
+		"owner": "milan"
+	},
+	{
+		"id": "322",
+		"owner": "venice"
+	},
+	{
+		"id": "323",
+		"owner": "bologna"
+	},
+	{
+		"id": "324",
+		"owner": "milan"
+	},
+	{
+		"id": "325",
+		"owner": "mauritania"
+	},
+	{
+		"id": "326",
+		"owner": "mauritania"
+	},
+	{
+		"id": "327",
+		"owner": "bologna"
+	},
+	{
+		"id": "328",
+		"owner": "bologna"
+	},
+	{
+		"id": "329",
+		"owner": "bologna"
+	},
+	{
+		"id": "330",
+		"owner": "bologna"
+	},
+	{
+		"id": "331",
+		"owner": "rome"
+	},
+	{
+		"id": "332",
+		"owner": "rome"
+	},
+	{
+		"id": "333",
+		"owner": "rome"
+	},
+	{
+		"id": "334",
+		"owner": "napoli"
+	},
+	{
+		"id": "335",
+		"owner": "napoli"
+	},
+	{
+		"id": "336",
+		"owner": "napoli"
+	},
+	{
+		"id": "337",
+		"owner": "napoli"
+	},
+	{
+		"id": "338",
+		"owner": "napoli"
+	},
+	{
+		"id": "339",
+		"owner": "napoli"
+	},
+	{
+		"id": "340",
+		"owner": "napoli"
+	},
+	{
+		"id": "341",
+		"owner": "napoli"
+	},
+	{
+		"id": "342",
+		"owner": "napoli"
+	},
+	{
+		"id": "343",
+		"owner": "napoli"
+	},
+	{
+		"id": "344",
+		"owner": "napoli"
+	},
+	{
+		"id": "345",
+		"owner": "napoli"
+	},
+	{
+		"id": "346",
+		"owner": "napoli"
+	},
+	{
+		"id": "347",
+		"owner": "napoli"
+	},
+	{
+		"id": "348",
+		"owner": "napoli"
+	},
+	{
+		"id": "349",
+		"owner": "rome"
+	},
+	{
+		"id": "350",
+		"owner": "bologna"
+	},
+	{
+		"id": "351",
+		"owner": "bologna"
+	},
+	{
+		"id": "352",
+		"owner": "bologna"
+	},
+	{
+		"id": "353",
+		"owner": "venice"
+	},
+	{
+		"id": "354",
+		"owner": "venice"
+	},
+	{
+		"id": "355",
+		"owner": "venice"
+	},
+	{
+		"id": "356",
+		"owner": "venice"
+	},
+	{
+		"id": "357",
+		"owner": "venice"
+	},
+	{
+		"id": "358",
+		"owner": "venice"
+	},
+	{
+		"id": "359",
+		"owner": "hre"
+	},
+	{
+		"id": "360",
+		"owner": "hre"
+	},
+	{
+		"id": "361",
+		"owner": "hre"
+	},
+	{
+		"id": "362",
+		"owner": "hre"
+	},
+	{
+		"id": "363",
+		"owner": "hre"
+	},
+	{
+		"id": "364",
+		"owner": "hre"
+	},
+	{
+		"id": "365",
+		"owner": "hre"
+	},
+	{
+		"id": "366",
+		"owner": "hre"
+	},
+	{
+		"id": "367",
+		"owner": "hre"
+	},
+	{
+		"id": "368",
+		"owner": "poland"
+	},
+	{
+		"id": "369",
+		"owner": "poland"
+	},
+	{
+		"id": "370",
+		"owner": "poland"
+	},
+	{
+		"id": "371",
+		"owner": "poland"
+	},
+	{
+		"id": "372",
+		"owner": "lithuania"
+	},
+	{
+		"id": "373",
+		"owner": "lithuania"
+	},
+	{
+		"id": "374",
+		"owner": "lithuania"
+	},
+	{
+		"id": "375",
+		"owner": "lithuania"
+	},
+	{
+		"id": "376",
+		"owner": "lithuania"
+	},
+	{
+		"id": "377",
+		"owner": "lithuania"
+	},
+	{
+		"id": "378",
+		"owner": "lithuania"
+	},
+	{
+		"id": "379",
+		"owner": "lithuania"
+	},
+	{
+		"id": "380",
+		"owner": "lithuania"
+	},
+	{
+		"id": "404",
+		"owner": "russia"
+	},
+	{
+		"id": "408",
+		"owner": "russia"
+	},
+	{
+		"id": "409",
+		"owner": "russia"
+	},
+	{
+		"id": "410",
+		"owner": "russia"
+	},
+	{
+		"id": "411",
+		"owner": "russia"
+	},
+	{
+		"id": "412",
+		"owner": "russia"
+	},
+	{
+		"id": "413",
+		"owner": "russia"
+	},
+	{
+		"id": "414",
+		"owner": "russia"
+	},
+	{
+		"id": "415",
+		"owner": "russia"
+	},
+	{
+		"id": "416",
+		"owner": "lithuania"
+	},
+	{
+		"id": "417",
+		"owner": "russia"
+	},
+	{
+		"id": "418",
+		"owner": "lithuania"
+	},
+	{
+		"id": "419",
+		"owner": "russia"
+	},
+	{
+		"id": "420",
+		"owner": "lithuania"
+	},
+	{
+		"id": "421",
+		"owner": "lithuania"
+	},
+	{
+		"id": "422",
+		"owner": "lithuania"
+	},
+	{
+		"id": "423",
+		"owner": "lithuania"
+	},
+	{
+		"id": "424",
+		"owner": "lithuania"
+	},
+	{
+		"id": "425",
+		"owner": "independent"
+	},
+	{
+		"id": "426",
+		"owner": "lithuania"
+	},
+	{
+		"id": "427",
+		"owner": "poland"
+	},
+	{
+		"id": "428",
+		"owner": "poland"
+	},
+	{
+		"id": "429",
+		"owner": "poland"
+	},
+	{
+		"id": "430",
+		"owner": "hre"
+	},
+	{
+		"id": "431",
+		"owner": "poland"
+	},
+	{
+		"id": "432",
+		"owner": "poland"
+	},
+	{
+		"id": "433",
+		"owner": "poland"
+	},
+	{
+		"id": "434",
+		"owner": "poland"
+	},
+	{
+		"id": "435",
+		"owner": "poland"
+	},
+	{
+		"id": "436",
+		"owner": "poland"
+	},
+	{
+		"id": "437",
+		"owner": "hre"
+	},
+	{
+		"id": "438",
+		"owner": "poland"
+	},
+	{
+		"id": "439",
+		"owner": "hre"
+	},
+	{
+		"id": "440",
+		"owner": "poland"
+	},
+	{
+		"id": "441",
+		"owner": "poland"
+	},
+	{
+		"id": "442",
+		"owner": "poland"
+	},
+	{
+		"id": "443",
+		"owner": "poland"
+	},
+	{
+		"id": "444",
+		"owner": "hungary"
+	},
+	{
+		"id": "445",
+		"owner": "poland"
+	},
+	{
+		"id": "446",
+		"owner": "hre"
+	},
+	{
+		"id": "447",
+		"owner": "hre"
+	},
+	{
+		"id": "448",
+		"owner": "hre"
+	},
+	{
+		"id": "449",
+		"owner": "hre"
+	},
+	{
+		"id": "450",
+		"owner": "hungary"
+	},
+	{
+		"id": "451",
+		"owner": "hungary"
+	},
+	{
+		"id": "452",
+		"owner": "hungary"
+	},
+	{
+		"id": "453",
+		"owner": "hungary"
+	},
+	{
+		"id": "454",
+		"owner": "hungary"
+	},
+	{
+		"id": "455",
+		"owner": "hre"
+	},
+	{
+		"id": "456",
+		"owner": "hre"
+	},
+	{
+		"id": "457",
+		"owner": "venice"
+	},
+	{
+		"id": "458",
+		"owner": "venice"
+	},
+	{
+		"id": "459",
+		"owner": "independent"
+	},
+	{
+		"id": "460",
+		"owner": "independent"
+	},
+	{
+		"id": "461",
+		"owner": "independent"
+	},
+	{
+		"id": "462",
+		"owner": "independent"
+	},
+	{
+		"id": "463",
+		"owner": "independent"
+	},
+	{
+		"id": "464",
+		"owner": "independent"
+	},
+	{
+		"id": "465",
+		"owner": "independent"
+	},
+	{
+		"id": "466",
+		"owner": "independent"
+	},
+	{
+		"id": "467",
+		"owner": "independent"
+	},
+	{
+		"id": "468",
+		"owner": "byzantium"
+	},
+	{
+		"id": "469",
+		"owner": "byzantium"
+	},
+	{
+		"id": "470",
+		"owner": "byzantium"
+	},
+	{
+		"id": "471",
+		"owner": "byzantium"
+	},
+	{
+		"id": "472",
+		"owner": "byzantium"
+	},
+	{
+		"id": "473",
+		"owner": "byzantium"
+	},
+	{
+		"id": "474",
+		"owner": "byzantium"
+	},
+	{
+		"id": "475",
+		"owner": "byzantium"
+	},
+	{
+		"id": "476",
+		"owner": "byzantium"
+	},
+	{
+		"id": "477",
+		"owner": "byzantium"
+	},
+	{
+		"id": "478",
+		"owner": "byzantium"
+	},
+	{
+		"id": "479",
+		"owner": "byzantium"
+	},
+	{
+		"id": "480",
+		"owner": "byzantium"
+	},
+	{
+		"id": "481",
+		"owner": "byzantium"
+	},
+	{
+		"id": "482",
+		"owner": "byzantium"
+	},
+	{
+		"id": "483",
+		"owner": "byzantium"
+	},
+	{
+		"id": "484",
+		"owner": "byzantium"
+	},
+	{
+		"id": "485",
+		"owner": "byzantium"
+	},
+	{
+		"id": "486",
+		"owner": "byzantium"
+	},
+	{
+		"id": "487",
+		"owner": "byzantium"
+	},
+	{
+		"id": "488",
+		"owner": "byzantium"
+	},
+	{
+		"id": "489",
+		"owner": "byzantium"
+	},
+	{
+		"id": "490",
+		"owner": "byzantium"
+	},
+	{
+		"id": "491",
+		"owner": "byzantium"
+	},
+	{
+		"id": "492",
+		"owner": "byzantium"
+	},
+	{
+		"id": "493",
+		"owner": "byzantium"
+	},
+	{
+		"id": "494",
+		"owner": "byzantium"
+	},
+	{
+		"id": "495",
+		"owner": "byzantium"
+	},
+	{
+		"id": "496",
+		"owner": "byzantium"
+	},
+	{
+		"id": "497",
+		"owner": "byzantium"
+	},
+	{
+		"id": "498",
+		"owner": "byzantium"
+	},
+	{
+		"id": "499",
+		"owner": "byzantium"
+	},
+	{
+		"id": "500",
+		"owner": "byzantium"
+	},
+	{
+		"id": "501",
+		"owner": "byzantium"
+	},
+	{
+		"id": "502",
+		"owner": "byzantium"
+	},
+	{
+		"id": "503",
+		"owner": "byzantium"
+	},
+	{
+		"id": "504",
+		"owner": "byzantium"
+	},
+	{
+		"id": "505",
+		"owner": "byzantium"
+	},
+	{
+		"id": "506",
+		"owner": "byzantium"
+	},
+	{
+		"id": "507",
+		"owner": "byzantium"
+	},
+	{
+		"id": "508",
+		"owner": "byzantium"
+	},
+	{
+		"id": "509",
+		"owner": "byzantium"
+	},
+	{
+		"id": "510",
+		"owner": "cumans"
+	},
+	{
+		"id": "511",
+		"owner": "cumans"
+	},
+	{
+		"id": "512",
+		"owner": "cumans"
+	},
+	{
+		"id": "513",
+		"owner": "cumans"
+	},
+	{
+		"id": "514",
+		"owner": "cumans"
+	},
+	{
+		"id": "515",
+		"owner": "hungary"
+	},
+	{
+		"id": "516",
+		"owner": "hungary"
+	},
+	{
+		"id": "517",
+		"owner": "hungary"
+	},
+	{
+		"id": "518",
+		"owner": "hungary"
+	},
+	{
+		"id": "519",
+		"owner": "hungary"
+	},
+	{
+		"id": "520",
+		"owner": "hungary"
+	},
+	{
+		"id": "521",
+		"owner": "hungary"
+	},
+	{
+		"id": "522",
+		"owner": "hungary"
+	},
+	{
+		"id": "523",
+		"owner": "hungary"
+	},
+	{
+		"id": "524",
+		"owner": "hungary"
+	},
+	{
+		"id": "525",
+		"owner": "poland"
+	},
+	{
+		"id": "526",
+		"owner": "poland"
+	},
+	{
+		"id": "527",
+		"owner": "poland"
+	},
+	{
+		"id": "528",
+		"owner": "poland"
+	},
+	{
+		"id": "529",
+		"owner": "poland"
+	},
+	{
+		"id": "530",
+		"owner": "poland"
+	},
+	{
+		"id": "531",
+		"owner": "poland"
+	},
+	{
+		"id": "532",
+		"owner": "poland"
+	},
+	{
+		"id": "533",
+		"owner": "hungary"
+	},
+	{
+		"id": "534",
+		"owner": "independent"
+	},
+	{
+		"id": "535",
+		"owner": "russia"
+	},
+	{
+		"id": "536",
+		"owner": "russia"
+	},
+	{
+		"id": "537",
+		"owner": "hungary"
+	},
+	{
+		"id": "538",
+		"owner": "hungary"
+	},
+	{
+		"id": "539",
+		"owner": "hungary"
+	},
+	{
+		"id": "540",
+		"owner": "hungary"
+	},
+	{
+		"id": "541",
+		"owner": "cumans"
+	},
+	{
+		"id": "542",
+		"owner": "cumans"
+	},
+	{
+		"id": "543",
+		"owner": "cumans"
+	},
+	{
+		"id": "544",
+		"owner": "cumans"
+	},
+	{
+		"id": "545",
+		"owner": "hungary"
+	},
+	{
+		"id": "546",
+		"owner": "russia"
+	},
+	{
+		"id": "547",
+		"owner": "russia"
+	},
+	{
+		"id": "548",
+		"owner": "russia"
+	},
+	{
+		"id": "549",
+		"owner": "russia"
+	},
+	{
+		"id": "550",
+		"owner": "lithuania"
+	},
+	{
+		"id": "551",
+		"owner": "russia"
+	},
+	{
+		"id": "552",
+		"owner": "russia"
+	},
+	{
+		"id": "553",
+		"owner": "russia"
+	},
+	{
+		"id": "554",
+		"owner": "russia"
+	},
+	{
+		"id": "555",
+		"owner": "russia"
+	},
+	{
+		"id": "556",
+		"owner": "cumans"
+	},
+	{
+		"id": "557",
+		"owner": "cumans"
+	},
+	{
+		"id": "558",
+		"owner": "cumans"
+	},
+	{
+		"id": "559",
+		"owner": "byzantium"
+	},
+	{
+		"id": "560",
+		"owner": "byzantium"
+	},
+	{
+		"id": "561",
+		"owner": "byzantium"
+	},
+	{
+		"id": "562",
+		"owner": "byzantium"
+	},
+	{
+		"id": "563",
+		"owner": "cumans"
+	},
+	{
+		"id": "564",
+		"owner": "cumans"
+	},
+	{
+		"id": "565",
+		"owner": "cumans"
+	},
+	{
+		"id": "566",
+		"owner": "cumans"
+	},
+	{
+		"id": "567",
+		"owner": "russia"
+	},
+	{
+		"id": "568",
+		"owner": "russia"
+	},
+	{
+		"id": "569",
+		"owner": "russia"
+	},
+	{
+		"id": "570",
+		"owner": "russia"
+	},
+	{
+		"id": "571",
+		"owner": "russia"
+	},
+	{
+		"id": "572",
+		"owner": "russia"
+	},
+	{
+		"id": "573",
+		"owner": "russia"
+	},
+	{
+		"id": "574",
+		"owner": "russia"
+	},
+	{
+		"id": "575",
+		"owner": "russia"
+	},
+	{
+		"id": "576",
+		"owner": "russia"
+	},
+	{
+		"id": "577",
+		"owner": "russia"
+	},
+	{
+		"id": "578",
+		"owner": "russia"
+	},
+	{
+		"id": "580",
+		"owner": "russia"
+	},
+	{
+		"id": "581",
+		"owner": "russia"
+	},
+	{
+		"id": "582",
+		"owner": "russia"
+	},
+	{
+		"id": "583",
+		"owner": "russia"
+	},
+	{
+		"id": "584",
+		"owner": "russia"
+	},
+	{
+		"id": "585",
+		"owner": "russia"
+	},
+	{
+		"id": "587",
+		"owner": "russia"
+	},
+	{
+		"id": "600",
+		"owner": "turks"
+	},
+	{
+		"id": "601",
+		"owner": "turks"
+	},
+	{
+		"id": "662",
+		"owner": "kwarezm"
+	},
+	{
+		"id": "667",
+		"owner": "turks"
+	},
+	{
+		"id": "668",
+		"owner": "turks"
+	},
+	{
+		"id": "669",
+		"owner": "turks"
+	},
+	{
+		"id": "670",
+		"owner": "turks"
+	},
+	{
+		"id": "671",
+		"owner": "turks"
+	},
+	{
+		"id": "672",
+		"owner": "turks"
+	},
+	{
+		"id": "673",
+		"owner": "turks"
+	},
+	{
+		"id": "676",
+		"owner": "turks"
+	},
+	{
+		"id": "677",
+		"owner": "turks"
+	},
+	{
+		"id": "678",
+		"owner": "turks"
+	},
+	{
+		"id": "679",
+		"owner": "turks"
+	},
+	{
+		"id": "680",
+		"owner": "turks"
+	},
+	{
+		"id": "681",
+		"owner": "turks"
+	},
+	{
+		"id": "682",
+		"owner": "turks"
+	},
+	{
+		"id": "683",
+		"owner": "turks"
+	},
+	{
+		"id": "684",
+		"owner": "turks"
+	},
+	{
+		"id": "685",
+		"owner": "turks"
+	},
+	{
+		"id": "686",
+		"owner": "turks"
+	},
+	{
+		"id": "687",
+		"owner": "turks"
+	},
+	{
+		"id": "699",
+		"owner": "turks"
+	},
+	{
+		"id": "701",
+		"owner": "turks"
+	},
+	{
+		"id": "702",
+		"owner": "turks"
+	},
+	{
+		"id": "703",
+		"owner": "turks"
+	},
+	{
+		"id": "704",
+		"owner": "turks"
+	},
+	{
+		"id": "705",
+		"owner": "turks"
+	},
+	{
+		"id": "706",
+		"owner": "turks"
+	},
+	{
+		"id": "707",
+		"owner": "turks"
+	},
+	{
+		"id": "708",
+		"owner": "egypt"
+	},
+	{
+		"id": "709",
+		"owner": "egypt"
+	},
+	{
+		"id": "710",
+		"owner": "egypt"
+	},
+	{
+		"id": "718",
+		"owner": "egypt"
+	},
+	{
+		"id": "719",
+		"owner": "egypt"
+	},
+	{
+		"id": "720",
+		"owner": "egypt"
+	},
+	{
+		"id": "721",
+		"owner": "egypt"
+	},
+	{
+		"id": "722",
+		"owner": "egypt"
+	},
+	{
+		"id": "723",
+		"owner": "egypt"
+	},
+	{
+		"id": "724",
+		"owner": "egypt"
+	},
+	{
+		"id": "725",
+		"owner": "egypt"
+	},
+	{
+		"id": "726",
+		"owner": "egypt"
+	},
+	{
+		"id": "727",
+		"owner": "egypt"
+	},
+	{
+		"id": "728",
+		"owner": "egypt"
+	},
+	{
+		"id": "729",
+		"owner": "egypt"
+	},
+	{
+		"id": "730",
+		"owner": "egypt"
+	},
+	{
+		"id": "731",
+		"owner": "egypt"
+	},
+	{
+		"id": "732",
+		"owner": "egypt"
+	},
+	{
+		"id": "733",
+		"owner": "egypt"
+	},
+	{
+		"id": "734",
+		"owner": "turks"
+	},
+	{
+		"id": "735",
+		"owner": "armenia"
+	},
+	{
+		"id": "736",
+		"owner": "turks"
+	},
+	{
+		"id": "737",
+		"owner": "turks"
+	},
+	{
+		"id": "738",
+		"owner": "turks"
+	},
+	{
+		"id": "739",
+		"owner": "byzantium"
+	},
+	{
+		"id": "740",
+		"owner": "byzantium"
+	},
+	{
+		"id": "741",
+		"owner": "byzantium"
+	},
+	{
+		"id": "742",
+		"owner": "byzantium"
+	},
+	{
+		"id": "743",
+		"owner": "byzantium"
+	},
+	{
+		"id": "744",
+		"owner": "byzantium"
+	},
+	{
+		"id": "745",
+		"owner": "byzantium"
+	},
+	{
+		"id": "746",
+		"owner": "byzantium"
+	},
+	{
+		"id": "747",
+		"owner": "byzantium"
+	},
+	{
+		"id": "748",
+		"owner": "byzantium"
+	},
+	{
+		"id": "749",
+		"owner": "byzantium"
+	},
+	{
+		"id": "750",
+		"owner": "byzantium"
+	},
+	{
+		"id": "751",
+		"owner": "turks"
+	},
+	{
+		"id": "752",
+		"owner": "turks"
+	},
+	{
+		"id": "753",
+		"owner": "turks"
+	},
+	{
+		"id": "754",
+		"owner": "byzantium"
+	},
+	{
+		"id": "755",
+		"owner": "byzantium"
+	},
+	{
+		"id": "756",
+		"owner": "byzantium"
+	},
+	{
+		"id": "757",
+		"owner": "byzantium"
+	},
+	{
+		"id": "758",
+		"owner": "turks"
+	},
+	{
+		"id": "759",
+		"owner": "turks"
+	},
+	{
+		"id": "760",
+		"owner": "turks"
+	},
+	{
+		"id": "761",
+		"owner": "armenia"
+	},
+	{
+		"id": "762",
+		"owner": "armenia"
+	},
+	{
+		"id": "763",
+		"owner": "turks"
+	},
+	{
+		"id": "764",
+		"owner": "turks"
+	},
+	{
+		"id": "765",
+		"owner": "egypt"
+	},
+	{
+		"id": "766",
+		"owner": "egypt"
+	},
+	{
+		"id": "767",
+		"owner": "egypt"
+	},
+	{
+		"id": "768",
+		"owner": "egypt"
+	},
+	{
+		"id": "769",
+		"owner": "egypt"
+	},
+	{
+		"id": "770",
+		"owner": "egypt"
+	},
+	{
+		"id": "771",
+		"owner": "egypt"
+	},
+	{
+		"id": "772",
+		"owner": "egypt"
+	},
+	{
+		"id": "773",
+		"owner": "egypt"
+	},
+	{
+		"id": "774",
+		"owner": "egypt"
+	},
+	{
+		"id": "775",
+		"owner": "egypt"
+	},
+	{
+		"id": "776",
+		"owner": "egypt"
+	},
+	{
+		"id": "777",
+		"owner": "egypt"
+	},
+	{
+		"id": "778",
+		"owner": "egypt"
+	},
+	{
+		"id": "779",
+		"owner": "egypt"
+	},
+	{
+		"id": "780",
+		"owner": "egypt"
+	},
+	{
+		"id": "781",
+		"owner": "egypt"
+	},
+	{
+		"id": "782",
+		"owner": "egypt"
+	},
+	{
+		"id": "783",
+		"owner": "egypt"
+	},
+	{
+		"id": "784",
+		"owner": "egypt"
+	},
+	{
+		"id": "785",
+		"owner": "egypt"
+	},
+	{
+		"id": "786",
+		"owner": "egypt"
+	},
+	{
+		"id": "787",
+		"owner": "egypt"
+	},
+	{
+		"id": "788",
+		"owner": "egypt"
+	},
+	{
+		"id": "789",
+		"owner": "egypt"
+	},
+	{
+		"id": "790",
+		"owner": "egypt"
+	},
+	{
+		"id": "791",
+		"owner": "egypt"
+	},
+	{
+		"id": "792",
+		"owner": "egypt"
+	},
+	{
+		"id": "793",
+		"owner": "egypt"
+	},
+	{
+		"id": "794",
+		"owner": "egypt"
+	},
+	{
+		"id": "795",
+		"owner": "egypt"
+	},
+	{
+		"id": "796",
+		"owner": "egypt"
+	},
+	{
+		"id": "797",
+		"owner": "egypt"
+	},
+	{
+		"id": "798",
+		"owner": "egypt"
+	},
+	{
+		"id": "799",
+		"owner": "egypt"
+	},
+	{
+		"id": "800",
+		"owner": "egypt"
+	},
+	{
+		"id": "801",
+		"owner": "egypt"
+	},
+	{
+		"id": "802",
+		"owner": "egypt"
+	},
+	{
+		"id": "803",
+		"owner": "egypt"
+	},
+	{
+		"id": "804",
+		"owner": "egypt"
+	},
+	{
+		"id": "805",
+		"owner": "egypt"
+	},
+	{
+		"id": "806",
+		"owner": "egypt"
+	},
+	{
+		"id": "807",
+		"owner": "egypt"
+	},
+	{
+		"id": "808",
+		"owner": "egypt"
+	},
+	{
+		"id": "809",
+		"owner": "egypt"
+	},
+	{
+		"id": "810",
+		"owner": "mauritania"
+	},
+	{
+		"id": "811",
+		"owner": "mauritania"
+	},
+	{
+		"id": "812",
+		"owner": "venice"
+	},
+	{
+		"id": "813",
+		"owner": "mauritania"
+	},
+	{
+		"id": "814",
+		"owner": "mauritania"
+	},
+	{
+		"id": "815",
+		"owner": "mauritania"
+	},
+	{
+		"id": "816",
+		"owner": "mauritania"
+	},
+	{
+		"id": "817",
+		"owner": "mauritania"
+	},
+	{
+		"id": "818",
+		"owner": "mauritania"
+	},
+	{
+		"id": "819",
+		"owner": "mauritania"
+	},
+	{
+		"id": "820",
+		"owner": "mauritania"
+	},
+	{
+		"id": "821",
+		"owner": "mauritania"
+	},
+	{
+		"id": "822",
+		"owner": "mauritania"
+	},
+	{
+		"id": "823",
+		"owner": "mauritania"
+	},
+	{
+		"id": "824",
+		"owner": "mauritania"
+	},
+	{
+		"id": "825",
+		"owner": "mauritania"
+	},
+	{
+		"id": "826",
+		"owner": "byzantium"
+	},
+	{
+		"id": "827",
+		"owner": "byzantium"
+	},
+	{
+		"id": "828",
+		"owner": "mauritania"
+	},
+	{
+		"id": "829",
+		"owner": "mauritania"
+	},
+	{
+		"id": "830",
+		"owner": "mauritania"
+	},
+	{
+		"id": "831",
+		"owner": "mauritania"
+	},
+	{
+		"id": "832",
+		"owner": "mauritania"
+	},
+	{
+		"id": "833",
+		"owner": "mauritania"
+	},
+	{
+		"id": "834",
+		"owner": "mauritania"
+	},
+	{
+		"id": "835",
+		"owner": "mauritania"
+	},
+	{
+		"id": "836",
+		"owner": "mauritania"
+	},
+	{
+		"id": "837",
+		"owner": "mauritania"
+	},
+	{
+		"id": "838",
+		"owner": "mauritania"
+	},
+	{
+		"id": "839",
+		"owner": "mauritania"
+	},
+	{
+		"id": "840",
+		"owner": "mauritania"
+	},
+	{
+		"id": "841",
+		"owner": "mauritania"
+	},
+	{
+		"id": "842",
+		"owner": "mauritania"
+	},
+	{
+		"id": "843",
+		"owner": "mauritania"
+	},
+	{
+		"id": "844",
+		"owner": "mauritania"
+	},
+	{
+		"id": "848",
+		"owner": "hre"
+	},
+	{
+		"id": "851",
+		"owner": "napoli"
+	},
+	{
+	  	"id": "929",
+	  	"owner": "napoli"
+	}
+]

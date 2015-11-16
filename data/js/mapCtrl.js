@@ -11,23 +11,21 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
     };
 
     var map = L.map('map', {
-        crs: L.CRS.Simple
+        crs: L.CRS.Simple,
+        maxZoom: 1
     }).setView([-1250, 700], 1);
-
-    map.dragging.disable();
-    map.scrollWheelZoom.disable();
-
-    map.on({
-        zoomend: function() {
-            map.fitBounds(map.getBounds());
-        }
-    });
+    function getRegionById(array,  id) {
+        return $.grep(array, function(e){ return e.id == id; })[0];
+    }
+    //map.dragging.disable();
+    //map.scrollWheelZoom.disable();
 
     $.ajax({method: "GET", url: "/getFactions"}).done(function (data) {
         var factions = data;
         $.ajax({method: "GET", url: "/getCampaignInfo"}).done(function (data) {
 
             var campaignInfo = data;
+
             var geojson = L.geoJson(regions, {
                 style: campaignInfo,
                 onEachFeature: onEachFeature
@@ -43,7 +41,8 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
             }
 
             function style_countries(feature) {
-                if (!campaignInfo[feature.id]) return {
+                var temp_region = getRegionById(campaignInfo,  feature.id);
+                if (!temp_region || !temp_region.owner) return {
                     fillColor: '#000000',
                     weight: 0,
                     opacity: 0,
@@ -52,7 +51,7 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
                     fillOpacity: 1
                 };
                 return {
-                    fillColor: getCountryColours(feature.properties.name, campaignInfo[feature.id]),
+                    fillColor: getCountryColours(feature.properties.name, temp_region.owner),
                     weight: 2,
                     opacity: 1,
                     color: '#000000',
@@ -62,17 +61,6 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
             }
 
             showCountries();
-
-            //map.setIcon('/files/img/city.svg');
-            //L.marker([-800, 800]).addTo(map);
-
-            var fortressIcon = L.icon({
-                iconUrl: '/img/city.svg',
-                iconSize: [40, 40],
-                iconAnchor: [22, 94],
-                popupAnchor: [-3, -76]
-            });
-
 
             function highlightFeature(e) {
                 var prov = e.target;
@@ -85,7 +73,7 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
                 if (!L.Browser.ie && !L.Browser.opera) {
                     prov.bringToFront();
                 }
-                info.update(prov.feature.properties, prov.feature.id, campaignInfo[prov.feature.id]);
+                info.update(prov.feature.properties, prov.feature.id, getRegionById(campaignInfo,  prov.feature.id).owner);
             }
 
             function resetHighlight(e) {
@@ -95,10 +83,9 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
             }
 
             function zoomToFeature(e) {
-                console.log(e);
                 map.fitBounds(e.target.getBounds());
-                L.marker([-800, 800], {icon: fortressIcon}).addTo(map);
-                console.log(map.getBounds());
+                $('.mapmode').show();
+                mapmodes.update(e.target.feature.id, e.target.feature.properties.name, getRegionById(campaignInfo,  e.target.feature.id).owner)
             }
 
             function onEachFeature(feature, prov) {
@@ -109,15 +96,25 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
                 });
             }
 
-            function updateMapInfo(region_id, region_owner) {
+            function updateMapInfo(region_id, region_name, region_owner) {
+                console.log(getRegionById(campaignInfo,  region_id));
                 $.ajax({
                     method: "POST", url: "/setCampaignInfo", data: {
-                        'id': region_id, 
-                        'country': region_owner
+                        'regionID': region_id,
+                        'new_owner': region_owner
                     }
-                }).done(function (data) {
-                    campaignInfo[region_id] = region_owner;
+                }).done(function () {
+                    campaignInfo[campaignInfo.indexOf(getRegionById(campaignInfo,  region_id))].owner = region_owner;
                     showCountries();
+                });
+                $.ajax({
+                    method: "POST", url: "/editRegionsOne", data: {
+                        'regionID': region_id,
+                        'regionName': region_name
+                    }
+                }).done(function () {
+                    getRegionById(campaignInfo,  region_id).name = region_name;
+                    regions.features[regions.features.indexOf(getRegionById(regions.features,  region_id))].properties.name = region_name;
                 })
             }
 
@@ -150,29 +147,56 @@ $.ajax({method: "GET", url: "/getRegionsAll"}).done( function( data ) {
                 this.update();
                 return this._div;
             };
-            mapmodes.update = function () {
+            mapmodes.update = function (region_id, region_name, region_owner) {
                 this._div.innerHTML =
-                    '<h1>Map editor</h1>' +
-                    '<span>region id : </span><input type="text" id="region_id_updater">' +
+                    '<h2>Edit region</h2>' +
+                    '<span style="width : 100%">region id : <span style="float:right">' + region_id + '</span></span>' +
                     '<br>' +
                     '<br>' +
-                    '<span>to country : </span><input type="text" id="region_country_updater">' +
+                    '<span>region name : </span><input type="text" id="region_name_updater" value="' + region_name + '">' +
+                    '<br>' +
+                    '<br>' +
+                    '<span>region owner : </span><input type="text" id="region_country_updater" value="' + region_owner + '">' +
                     '<br>' +
                     '<br>' +
                     '<button id="button-update">Update</button>' +
-                    '<button id="button-reset">Reset</button>'
+                    '<button id="button-reset">Reset</button>' +
+                    '<br>';
+                $("#button-update").click(function () {
+                    console.log('start updating');
+                    if ($('#region_name_updater').val() && $('#region_name_updater').val() != "" && $('#region_country_updater').val() && $('#region_country_updater').val()) {
+                        updateMapInfo(region_id, $('#region_name_updater').val(), $('#region_country_updater').val());
+                    }
+                });
+                $("#button-reset").click(function () {
+                    resetMapInfo();
+                });
             };
-            mapmodes.setPosition('bottomleft');
+            mapmodes.setPosition('topleft');
             mapmodes.addTo(map);
 
-            $("#button-update").click(function () {
-                if ($('#region_id_updater').val() && $('#region_id_updater').val() != "" && $('#region_country_updater').val() && $('#region_country_updater').val()) {
-                    updateMapInfo($('#region_id_updater').val(), $('#region_country_updater').val());
+
+
+            $('.mapmode').hide();
+
+            map.on({
+                zoomend: function() {
+                    map.fitBounds(map.getBounds());
+                    if(map.getZoom() == '1') {
+                        console.log('zoomed');
+                        //$('.mapmode').show();
+                    }
+                    else {
+                        $('.mapmode').hide();
+                        mapmodes.update('', '', '')
+                    }
+                },
+                click: function() {
+                    $('.mapmode').hide();
                 }
             });
-            $("#button-reset").click(function () {
-                resetMapInfo();
-            });
+
+
         });
     })
 });

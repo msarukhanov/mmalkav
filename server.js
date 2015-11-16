@@ -35,7 +35,8 @@ app.set('json spaces', 2);
 require('middleware/routes.js')(app, fs);
 require('middleware/mongooseModels.js')(app, mongoose);
 
-regionsSchema = mongoose.model('regions', regionModel.region);  
+regionsSchema = mongoose.model('regions', regionModel.region);
+region_ownersSchema = mongoose.model('region_owners', regionModel.region_owners);
 
 var server = app.listen(port || 901, function() {
     console.log("listening on " + port);
