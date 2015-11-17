@@ -37,22 +37,43 @@
       <file leaf-file-name="mapCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/js/mapCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.034483">
-              <caret line="192" column="18" selection-start-line="192" selection-start-column="18" selection-end-line="192" selection-end-column="18" />
-              <folding>
-                <marker date="1447670675376" expanded="true" signature="5712:5724" placeholder="..." />
-                <marker date="1447670675376" expanded="true" signature="5751:5762" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="map.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/css/map.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6360544">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="map.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/map.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.9245284">
+              <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.028911564">
+              <caret line="59" column="60" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+                <element signature="e#4078#5183#0" expanded="false" />
+                <marker date="1447752723011" expanded="true" signature="6795:6806" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,16 +98,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="campaignInfo.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/json/campaignInfo.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.769231">
-              <caret line="2819" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="2825" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="factions.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/json/factions.json">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,44 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="regions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/js/regions.js">
+      <file leaf-file-name="test.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-              <folding>
-                <element signature="e#180#8300#0" expanded="false" />
-                <element signature="e#13182#14164#0" expanded="false" />
-                <element signature="e#14282#15394#0" expanded="false" />
-                <element signature="e#15512#16754#0" expanded="false" />
-                <element signature="e#16874#17674#0" expanded="false" />
-                <element signature="e#17791#19007#0" expanded="false" />
-                <element signature="e#19126#20446#0" expanded="false" />
-                <element signature="e#20566#22614#0" expanded="false" />
-                <element signature="e#22734#23586#0" expanded="false" />
-                <element signature="e#23705#24427#0" expanded="false" />
-                <element signature="e#24546#25268#0" expanded="false" />
-                <element signature="e#25388#26682#0" expanded="false" />
-                <element signature="e#26802#29370#0" expanded="false" />
-                <element signature="e#29489#30731#0" expanded="false" />
-                <element signature="e#30852#31782#0" expanded="false" />
-                <element signature="e#31903#32547#0" expanded="false" />
-                <element signature="e#32665#33803#0" expanded="false" />
-                <element signature="e#33925#34595#0" expanded="false" />
-                <element signature="e#34713#35383#0" expanded="false" />
-                <element signature="e#35506#36358#0" expanded="false" />
-                <element signature="e#36477#37381#0" expanded="false" />
-                <element signature="e#37503#38381#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="regions.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/default/regions.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="8494.73">
-              <caret line="3475" column="824" selection-start-line="3475" selection-start-column="824" selection-end-line="3475" selection-end-column="824" />
+            <state vertical-scroll-proportion="48.166668">
+              <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -143,7 +121,7 @@
       <file leaf-file-name="regions.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/json/regions.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3008.3396">
+            <state vertical-scroll-proportion="-8.846154">
               <caret line="7087" column="19" selection-start-line="7087" selection-start-column="9" selection-end-line="7087" selection-end-column="19" />
               <folding />
             </state>
@@ -179,16 +157,17 @@
         <option value="$PROJECT_DIR$/map/data/js/data.js" />
         <option value="$PROJECT_DIR$/data/js/regions.js" />
         <option value="$PROJECT_DIR$/data/css/ckii.css" />
-        <option value="$PROJECT_DIR$/test.json" />
         <option value="$PROJECT_DIR$/data/default/regions.json" />
-        <option value="$PROJECT_DIR$/data/map.html" />
         <option value="$PROJECT_DIR$/data/json/campaignInfo.json" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/data/json/regions.json" />
         <option value="$PROJECT_DIR$/node_modules/middleware/mongooseModels.js" />
         <option value="$PROJECT_DIR$/node_modules/middleware/routes.js" />
-        <option value="$PROJECT_DIR$/data/js/mapCtrl.js" />
         <option value="$PROJECT_DIR$/data/css/map.css" />
+        <option value="$PROJECT_DIR$/test.json" />
+        <option value="$PROJECT_DIR$/data/js/mapCtrl.js" />
+        <option value="$PROJECT_DIR$/data/map.html" />
+        <option value="$PROJECT_DIR$/data/js/main.js" />
       </list>
     </option>
   </component>
@@ -232,6 +211,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -411,7 +391,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -484,7 +463,7 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25178573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897604" sideWeight="0.50238097" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -522,14 +501,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="62" selection-start-line="0" selection-start-column="62" selection-end-line="0" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/default/campaignInfo.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -574,10 +545,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1447670675376" expanded="true" signature="5712:5724" placeholder="..." />
-            <marker date="1447670675376" expanded="true" signature="5751:5762" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -657,10 +625,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <marker date="1447670675376" expanded="true" signature="5712:5724" placeholder="..." />
-            <marker date="1447670675376" expanded="true" signature="5751:5762" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -743,10 +708,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding>
-            <marker date="1447670675376" expanded="true" signature="5712:5724" placeholder="..." />
-            <marker date="1447670675376" expanded="true" signature="5751:5762" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -820,10 +782,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1447670675376" expanded="true" signature="5712:5724" placeholder="..." />
-            <marker date="1447670675376" expanded="true" signature="5751:5762" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -922,22 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="62" selection-start-line="0" selection-start-column="62" selection-end-line="0" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/js/regions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -971,8 +914,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/default/regions.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8494.73">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3475" column="824" selection-start-line="3475" selection-start-column="824" selection-end-line="3475" selection-end-column="824" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/json/campaignInfo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2819" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="2825" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/middleware/mongooseModels.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -987,18 +954,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/middleware/mongooseModels.js">
+    <entry file="file://$PROJECT_DIR$/data/css/map.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="19" />
+          <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1011,38 +970,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/json/campaignInfo.json">
+    <entry file="file://$PROJECT_DIR$/data/json/regions.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.769231">
-          <caret line="2819" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="2825" selection-end-column="1" />
+        <state vertical-scroll-proportion="-8.846154">
+          <caret line="7087" column="19" selection-start-line="7087" selection-start-column="9" selection-end-line="7087" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/json/regions.json">
+    <entry file="file://$PROJECT_DIR$/test.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3008.3396">
-          <caret line="7087" column="19" selection-start-line="7087" selection-start-column="9" selection-end-line="7087" selection-end-column="19" />
+        <state vertical-scroll-proportion="48.166668">
+          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/js/mapCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.034483">
-          <caret line="192" column="18" selection-start-line="192" selection-start-column="18" selection-end-line="192" selection-end-column="18" />
-          <folding>
-            <marker date="1447670675376" expanded="true" signature="5712:5724" placeholder="..." />
-            <marker date="1447670675376" expanded="true" signature="5751:5762" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/css/map.css">
+    <entry file="file://$PROJECT_DIR$/data/map.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6360544">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="-1.9245284">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.028911564">
+          <caret line="59" column="60" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#4078#5183#0" expanded="false" />
+            <marker date="1447752723011" expanded="true" signature="6795:6806" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

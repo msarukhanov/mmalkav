@@ -26,26 +26,7 @@ body {
     border-radius: 5px;
 }
 
-.mapmode {
-    padding: 2px 8px;
-    font-family: serif;
-    font-size: small;
-    text-align: center;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    z-index: 9999;
-    width: 200px;
-}
 
-.mapmode input {
-    float: right;
-    width: 100px;
-}
-.mapmode span {
-    text-align: left;
-    float: left;
-}
 
 .leaflet-control-attribution {
     display: none;
@@ -78,4 +59,40 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
     display: block;
+}
+
+.mapmode {
+    padding: 2px 8px;
+    font-family: serif;
+    font-size: small;
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 9999;
+    width: 200px;
+}
+
+.mapmode input {
+    float: right;
+    width: 100px;
+}
+.mapmode span {
+    text-align: left;
+    float: left;
+}
+
+.region_edit_title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.region_edit_wrapper {
+    width: 100%;
+}
+
+.region_edit_id span {
+    float: right;
+    background: white;
+    width: 50%;
 }
