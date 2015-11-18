@@ -24,6 +24,7 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
             maxZoom: 1,
             maxBounds: bounds
         }).setView([-1250, 700], 0);
+        L.mapbox.accessToken = 'pk.eyJ1IjoibW1hbGthdiIsImEiOiJjaWg0aTRyaWswMHN1a3FseXQ2MjRrbnl0In0.TnjjiSL_H80Z0thxcF-rtw';
 
         function getRegionById(array,  id) {
             return $.grep(array, function(e){ return e.id == id; })[0];
@@ -45,6 +46,10 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     style: campaignInfo,
                     onEachFeature: onEachFeature
                 }).addTo(map);
+
+                //map.whenReady(function() {
+                //    new L.Control.MiniMap(regions).addTo(map);
+                //});
 
                 function showCountries() {
                     geojson.setStyle(style_countries);
@@ -164,6 +169,17 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 };
                 info.addTo(map);
 
+                var featureGroup = L.featureGroup().addTo(map);
+                var drawControl = new L.Control.Draw({
+                    edit: {
+                        featureGroup: featureGroup
+                    }
+                }).addTo(map);
+                map.on('draw:created', function(e) {
+                    console.log(e);
+                    featureGroup.addLayer(e.layer);
+                });
+
                 var mapmodes = L.control();
                 mapmodes.onAdd = function (map) {
                     this._div = L.DomUtil.create('div', 'mapmode');
@@ -197,10 +213,10 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 };
                 mapmodes.setPosition('topleft');
                 mapmodes.addTo(map);
-
-
-
                 $('.mapmode').hide();
+
+
+
 
                 map.on({
                     zoomend: function() {
@@ -219,6 +235,86 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     }
                 });
 
+
+                $scope.isLog = false;
+                $scope.login_error = false;
+                $scope.login = function(login, password) {
+                    $http({
+                        url: "/chat/signin",
+                        method: "POST",
+                        data: {
+                            login : login,
+                            password : password
+                        }
+                    }).success(function (data) {
+                        if(data._id) {
+                            $scope.login_error = false;
+                            var socket = io();
+                            var name = data.login;
+                            var messages = $("#messages");
+                            var message_txt = $("#message_text");
+                            $('.chat .nick').text(name);
+
+                            function msg(nick, message) {
+                                var m = '<div class="msg">' +
+                                    '<span class="user">' + safe(nick) + ':</span> '
+                                    + safe(message) +
+                                    '</div>';
+                                messages
+                                    .append(m)
+                                    .scrollTop(messages[0].scrollHeight);
+                            }
+
+                            function msg_system(message) {
+                                var m = '<div class="msg system">' + safe(message) + '</div>';
+                                messages
+                                    .append(m)
+                                    .scrollTop(messages[0].scrollHeight);
+                            }
+
+                            socket.on('connecting', function () {
+                                msg_system('Connecting...');
+                            });
+
+                            socket.on('connect', function (data) {
+                                msg_system('Successfully connected to map chat!');
+                                socket.emit("message", {message: name + ' connected!', name: 'Admin'});
+                            });
+
+                            socket.on('message', function (data) {
+                                msg(data.name, data.message);
+                                message_txt.focus();
+                            });
+
+                            $("#message_btn").click(function () {
+                                var text = $("#message_text").val();
+                                if (text.length <= 0)
+                                    return;
+                                message_txt.val("");
+                                socket.emit("message", {message: text, name: name});
+                            });
+
+                            function safe(str) {
+                                return str.replace(/&/g, '&amp;')
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;');
+                            }
+
+                            $scope.isLog = true;
+                        }
+                        else {
+                            console.log(data);
+                            $scope.login_error = data;
+                        }
+                    });
+                };
+
+                $(document).ready(function () {
+
+
+
+
+                });
 
             });
         })

@@ -3,17 +3,53 @@
   <head>
     <meta charset="utf-8">
     <title>Medieval Regions Map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+
     <link rel="stylesheet" href="./css/leaflet.css" />
+    <script type="text/javascript" src="./js/lib/leaflet.js"></script>
+
+    <link rel="stylesheet" href="./css/mapbox.css" />
+    <script type="text/javascript" src="./js/lib/mapbox.js"></script>
+
+    <link rel="stylesheet" href="./css/leaflet.draw.css" />
+    <script type="text/javascript" src="./js/lib/leaflet.draw.js"></script>
+
     <link rel="stylesheet" href="./css/map.css"/>
     <script type="text/javascript" src="./js/lib/angular.min.js"></script>
-    <script type="text/javascript" src="./js/lib/leaflet.js"></script>
+
     <script type="text/javascript" src="./js/lib/jquery.min.js"></script>
+
+
   </head>
   <body>
     <div id="map"></div>
+    <div id="chat-window">
+      <form class="login_chat" ng-show="!isLog">
+        <input placeholder="Login" ng-model="chat_login" />
+        <input placeholder="Password" ng-model="chat_password" />
+        <span class="login_error_text" ng-show="login_error.error">{{login_error.msg}}</span>
+        <div class="btn_wrapper">
+          <button type="button" id="chat_login_btn" ng-click="login(chat_login,chat_password)">Login</button>
+        </div>
+      </form>
+      <div class="chat" ng-show="isLog">
+        <div class="messages" id="messages"></div>
+
+        <div class="panel">
+          <!--<span class="nick"></span>-->
+          <input type="text" name="message_text" id="message_text">
+          <button type="button" id="message_btn">Send</button>
+        </div>
+      </div>
+    </div>
     <!--<script type="text/javascript" src="./js/regions.js"></script>-->
     <!--<script type="text/javascript" src="./js/mapCtrl.js"></script>-->
     <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="././socket.io/socket.io.js"></script>
+  <script>
+
+  </script>
   </body>
 </html>

@@ -5,7 +5,6 @@ var app = express();
 
 mongoose = require('mongoose');
 
-
 var port = parseInt(process.env.PORT) || 901;
 
 var dbURI = 'mongodb://mmalkav:phoenix11@ds047114.mongolab.com:47114/heroku_tm8m3hgj';
@@ -37,7 +36,22 @@ require('middleware/mongooseModels.js')(app, mongoose);
 
 regionsSchema = mongoose.model('regions', regionModel.region);
 region_ownersSchema = mongoose.model('region_owners', regionModel.region_owners);
+userSchema = mongoose.model('users', chatAccount);
 
 var server = app.listen(port || 901, function() {
     console.log("listening on " + port);
+});
+
+var io  = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (client) {
+    client.on('message', function (message) {
+        try {
+            client.emit('message', message);
+            client.broadcast.emit('message', message);
+        } catch (e) {
+            console.log(e);
+            client.disconnect();
+        }
+    });
 });

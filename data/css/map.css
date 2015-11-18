@@ -3,8 +3,6 @@ body {
 }
 
 #map {
-    /*width: 1200px;*/
-    /*height: 800px;*/
     width: calc(100% - 16px);
     height: calc(100% - 16px);
     background-color: rgb(0,105,148);
@@ -71,11 +69,14 @@ body {
     border-radius: 5px;
     z-index: 9999;
     width: 200px;
+    left: 40px;
+    top: 72px;
+    position: fixed;
 }
 
 .mapmode input {
     float: right;
-    width: 100px;
+    width: 50%;
 }
 .mapmode span {
     text-align: left;
@@ -88,6 +89,10 @@ body {
 }
 
 .region_edit_wrapper {
+    width: 50%;
+}
+
+.region_edit_id {
     width: 100%;
 }
 
@@ -95,4 +100,64 @@ body {
     float: right;
     background: white;
     width: 50%;
+}
+
+#chat-window {
+    bottom: 20px;
+    right: 30px;
+    position: fixed;
+    background: white;
+}
+
+
+.demo {
+    width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    color: #4F6B72;
+    font-family: "PT Sans", Verdana, Arial, sans-serif;
+    font-size: 13px;
+}
+
+.chat .messages{
+    height: 300px;
+    border: 1px solid #d4d4d4;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px;
+}
+
+.chat .messages .user{
+    color: #B22222;
+}
+
+.chat .message{
+    width: 70%;
+}
+
+.chat .panel{
+    margin-top: 8px;
+    padding-bottom: 8px;
+}
+
+#message_text{
+    width: 70%;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.login_chat {
+    padding: 20px;
+    width: 150px;
+}
+
+.login_chat input {
+    width: 100%;
+}
+.login_chat .btn_wrapper {
+    width: 100%;
+}
+.login_error_text {
+    width: 100%;
+    color: red;
 }
