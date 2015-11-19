@@ -320,24 +320,23 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                 //        .replace(/</g, '&lt;')
                 //        .replace(/>/g, '&gt;');
                 //}
-                var FADE_TIME = 150; // ms
-                var TYPING_TIMER_LENGTH = 400; // ms
+
+                var FADE_TIME = 300;
+                var TYPING_TIMER_LENGTH = 400;
                 var COLORS = [
                     '#e21400', '#91580f', '#f8a700', '#f78b00',
                     '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
                     '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
                 ];
 
-                // Initialize varibles
                 var $window = $(window);
-                var $usernameInput = $('.usernameInput'); // Input for username
-                var $messages = $('.messages'); // Messages area
-                var $inputMessage = $('.inputMessage'); // Input message input box
+                var $usernameInput = $('.usernameInput');
+                var $messages = $('.messages');
+                var $inputMessage = $('.inputMessage');
 
-                var $loginPage = $('.login.page'); // The login page
-                var $chatPage = $('.chat.page'); // The chatroom page
+                var $loginPage = $('.login.page');
+                var $chatPage = $('.chat.page');
 
-                // Prompt for setting a username
                 var username;
                 var connected = false;
                 var typing = false;
@@ -353,8 +352,6 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                     } else {
                         message += "there are " + data.numUsers + " participants";
                     }
-                    console.log($rootScope.users_online);
-                    $rootScope.users_online = $.map(data.listUsers, function(el) { return el });
                     log(message);
                 }
 
@@ -494,11 +491,9 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                 }
 
                 $window.keydown(function (event) {
-                    // Auto-focus the current input when a key is typed
                     if (!(event.ctrlKey || event.metaKey || event.altKey)) {
                         $currentInput.focus();
                     }
-                    // When the client hits ENTER on their keyboard
                     if (event.which === 13) {
                         if (username) {
                             sendMessage();
@@ -525,10 +520,8 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
 
                 socket.on('login', function (data) {
                     connected = true;
-                    var message = "Welcome to Socket.IO Chat – ";
-                    log(message, {
-                        prepend: true
-                    });
+                    var message = "Welcome to Socket.IO Chat";
+                    log(message);
                     addParticipantsMessage(data);
                 });
 
@@ -555,6 +548,11 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                     removeChatTyping(data);
                 });
 
+                socket.on('refresh userlist', function (data) {
+                    console.log(data);
+                    $rootScope.users_online = data;
+                });
+
                 username = cleanInput($usernameInput.val().trim());
                 if (username) {
                     $loginPage.fadeOut();
@@ -563,7 +561,6 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                     $currentInput = $inputMessage.focus();
                     socket.emit('add user', username);
                 }
-
 
                 $rootScope.isLog = true;
             }

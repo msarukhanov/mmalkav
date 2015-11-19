@@ -92,7 +92,8 @@ var numUsers = 0;
 
 var usernames = {};
 var numUsers = 0;
-
+var users = io.sockets;
+//if(users.sockets[0]) console.log(users.sockets);
 io.on('connection', function (socket) {
     var addedUser = false;
 
@@ -117,6 +118,18 @@ io.on('connection', function (socket) {
             listUsers : usernames,
             numUsers: numUsers
         });
+        if(users.sockets[0]) console.log(users.sockets);
+        var user_list = [];
+        for(var i=0;i<users.sockets.length; i++) {
+            if(users.sockets[i].username) user_list.push(users.sockets[i].username);
+        }
+        console.log(user_list);
+        socket.emit('refresh userlist', {
+            userlist: user_list
+        });
+        socket.broadcast.emit('refresh userlist', {
+            userlist: user_list
+        });
     });
 
     socket.on('typing', function () {
@@ -127,6 +140,12 @@ io.on('connection', function (socket) {
 
     socket.on('stop typing', function () {
         socket.broadcast.emit('stop typing', {
+            username: socket.username
+        });
+    });
+
+    socket.on('users online', function () {
+        socket.broadcast.emit('update users', {
             username: socket.username
         });
     });
