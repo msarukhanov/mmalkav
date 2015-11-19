@@ -25,23 +25,47 @@
   </head>
   <body>
     <div id="map"></div>
-    <div id="chat-window">
-      <form class="login_chat" ng-show="!isLog">
-        <input placeholder="Login" ng-model="chat_login" />
-        <input placeholder="Password" ng-model="chat_password" />
-        <span class="login_error_text" ng-show="login_error.error">{{login_error.msg}}</span>
-        <div class="btn_wrapper">
-          <button type="button" id="chat_login_btn" ng-click="login(chat_login,chat_password)">Login</button>
-        </div>
-      </form>
-      <div class="chat" ng-show="isLog">
-        <div class="messages" id="messages"></div>
+    <div id="chat-window" ng-controller="chatCtrl">
+      <ul class="pages">
+        <li class="chat page">
+          <div class="chatArea">
+            <ul class="messages"></ul>
+            <input class="inputMessage" placeholder="Type here..."/>
+          </div>
+          <div class="chatUsers">
+            <ul class="users-list">
+              <li ng-repeat="user_name in users_online" class="users-item">{{user_name}}</li>
+            </ul>
+          </div>
+        </li>
+        <li class="login page">
+          <form class="form">
+            <h2 class="title">Login</h2>
+            <input class="usernameInput" type="text" maxlength="14" placeholder="Login" ng-model="chat_login"/>
+            <input class="passwordInput" type="text" maxlength="14" placeholder="Password" ng-model="chat_password"/>
+            <span class="login_error_text" ng-show="login_error.error">{{login_error.msg}}</span>
+            <br><br><br>
+            <input type="submit" value="LOG IN" ng-click="login(chat_login,chat_password)"/>
+          </form>
+        </li>
+      </ul>
+      <!--<form class="login_chat" ng-show="!isLog">-->
+        <!--<input placeholder="Login" ng-model="chat_login" />-->
+        <!--<input placeholder="Password" ng-model="chat_password" />-->
+        <!--<span class="login_error_text" ng-show="login_error.error">{{login_error.msg}}</span>-->
+        <!--<div class="btn_wrapper">-->
+          <!--<button type="button" id="chat_login_btn" ng-click="login(chat_login,chat_password)">Login</button>-->
+        <!--</div>-->
+      <!--</form>-->
+      <!--<div class="chat_wrapper" ng-show="isLog">-->
+        <!--<div class="messages" id="messages"></div>-->
 
-        <div class="panel">
-          <!--<span class="nick"></span>-->
-          <input type="text" name="message_text" id="message_text">
-          <button type="button" id="message_btn">Send</button>
-        </div>
+        <!--<div class="panel">-->
+          <!--&lt;!&ndash;<span class="nick"></span>&ndash;&gt;-->
+          <!--<input type="text" name="message_text" id="message_text">-->
+          <!--<button type="button" id="message_btn">Send</button>-->
+        <!--</div>-->
+
       </div>
     </div>
     <!--<script type="text/javascript" src="./js/regions.js"></script>-->
