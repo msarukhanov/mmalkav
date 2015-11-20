@@ -1,5 +1,41 @@
+/*@font-face {*/
+    /*font-family: 'UnifrakturCook';*/
+    /*font-style: normal;*/
+    /*font-weight: 700;*/
+    /*src: local('UnifrakturCook'), local('UnifrakturCook-Bold'), url(https://fonts.gstatic.com/s/unifrakturcook/v8/ASwh69ykD8iaoYijVEU6RpMdj8Gkv7ccSfgBBVtwm5Y.woff2) format('woff2');*/
+    /*unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;*/
+/*}*/
+/*body, div, span, input {*/
+    /*font-family: 'UnifrakturCook', cursive !important;*/
+/*}*/
 body {
     overflow: hidden;
+}
+
+#loading {
+    background: white;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1010;
+}
+.loading_wrapper {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    font-family: Arial;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+}
+
+.loading_image {
+    width: 180px;
+    height: 60px;
+    padding: 10px;
 }
 
 #map {
@@ -8,7 +44,6 @@ body {
     background-color: rgb(0,105,148);
     position: absolute;
     overflow: hidden;
-
 }
 
 /*.leaflet-zoom-animated {*/
@@ -87,20 +122,30 @@ body {
 .region_edit_title {
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 15px;
 }
 
 .region_edit_wrapper {
-    width: 50%;
-}
-
-.region_edit_id {
     width: 100%;
+    margin-bottom: 15px;
+    font-family: Arial;
+    font-size: 14px;
 }
 
 .region_edit_id span {
     float: right;
     background: white;
     width: 50%;
+}
+.region_edit_wrapper input, .region_edit_wrapper span {
+    border: none;
+    border-radius: 4px;
+    padding: 0 5px;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+    font-family: Arial;
+    font-size: 14px;
+    text-transform: none;
 }
 
 
@@ -114,33 +159,6 @@ body {
     font-family: "PT Sans", Verdana, Arial, sans-serif;
     font-size: 13px;
 }
-
-/*.chat_wrapper .messages{*/
-    /*height: 300px;*/
-    /*border: 1px solid #d4d4d4;*/
-    /*overflow-y: scroll;*/
-    /*overflow-x: hidden;*/
-    /*padding: 5px;*/
-/*}*/
-
-/*.chat_wrapper .messages .user{*/
-    /*color: #B22222;*/
-/*}*/
-
-/*.chat_wrapper .message{*/
-    /*width: 70%;*/
-/*}*/
-
-/*.chat_wrapper .panel{*/
-    /*margin-top: 8px;*/
-    /*padding-bottom: 8px;*/
-/*}*/
-
-/*#message_text{*/
-    /*width: 70%;*/
-    /*display: inline-block;*/
-    /*margin-left: 8px;*/
-/*}*/
 
 .login_chat {
     padding: 20px;
@@ -165,6 +183,9 @@ body {
     background: white;
     width: 300px;
     height: 300px;
+    border: 4px double black;
+    border-radius: 8px;
+    z-index: 1020;
 }
 
 ul {
@@ -204,14 +225,14 @@ ul {
 .login.page .form .usernameInput, .login.page .form .passwordInput {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #fff;
+    border-bottom: 1px solid #fff;
     outline: none;
-    /*padding-bottom: 10px;*/
+    padding-bottom: 8px;
     text-align: center;
     width: 250px;
     margin: 0 25px 10px;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
 }
 .login.page .form .passwordInput {
 
@@ -220,29 +241,20 @@ ul {
     font-size: 200%;
 }
 
-/*.login.page .usernameInput {*/
-    /*font-size: 200%;*/
-    /*letter-spacing: 3px;*/
-/*}*/
-
 .login.page .title {
     color: #fff;
 }
 
-/* Chat page */
+.login_btn {
+    background: white;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
 .chat.page {
     display: none;
-}
-
-/* Font */
-
-.messages {
-    /*font-size: 150%;*/
-}
-
-.inputMessage {
-    font-size: 100%;
 }
 
 .log {
@@ -252,8 +264,6 @@ ul {
     text-align: center;
 }
 
-/* Messages */
-
 .chatArea {
     height: 100%;
     padding-bottom: 60px;
@@ -262,7 +272,8 @@ ul {
 }
 
 .messages {
-    height: 245px;
+    height: 247px;
+    border-right: 1px solid #000;
     margin: 0;
     overflow-y: scroll;
     padding: 10px 20px 10px 20px;
@@ -280,10 +291,10 @@ ul {
     text-align: right;
 }
 
-/* Input */
-
 .inputMessage {
-    border: 2px solid #000;
+    border: none;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
     bottom: 0;
     height: 30px;
     left: 0;
@@ -291,12 +302,25 @@ ul {
     padding-left: 10px;
     position: absolute;
     right: 0;
-    width: 187px;
+    width: 189px;
 }
 
 .chatUsers, .chatUsers ul {
     width: 100px;
-    height: 300px;
+    height: 270px;
     float: right;
     padding: 0;
+}
+.chatUsers span  {
+    padding: 5px 5px;
+    text-transform: uppercase;
+    float: left;
+    width: 90px;
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+}
+.users-item {
+    padding: 5px 10px;
 }

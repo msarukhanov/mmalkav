@@ -4,7 +4,14 @@
 
 var app = angular.module("medievalMap", []);
 
+app.service("mapService", function($scope, $rootScope){
+
+});
+
 app.controller("mainCtrl", function($scope, $rootScope, $http) {
+    $scope.loading = true;
+    //$scope.loadingText = "Initializing";
+    $scope.loadingText = "Loading regions";
     $http({
         url: "/getRegionsAll",
         method: "GET"
@@ -15,13 +22,11 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
             "features": data
         };
 
-        var southWest = L.latLng(-1752, 68),
-            northEast = L.latLng(-249, 1932),
-            bounds = L.latLngBounds(southWest, northEast);
+        var southWest = L.latLng(-1752, 68), northEast = L.latLng(-249, 1932), bounds = L.latLngBounds(southWest, northEast);
 
         var map = L.map('map', {
             crs: L.CRS.Simple,
-            maxZoom: 8,
+            maxZoom: 1,
             maxBounds: bounds
         }).setView([-1250, 700], 0);
         L.mapbox.accessToken = 'pk.eyJ1IjoibW1hbGthdiIsImEiOiJjaWg0aTRyaWswMHN1a3FseXQ2MjRrbnl0In0.TnjjiSL_H80Z0thxcF-rtw';
@@ -29,27 +34,26 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
         function getRegionById(array,  id) {
             return $.grep(array, function(e){ return e.id == id; })[0];
         }
-
+        $scope.loadingText = "Loading factions";
         $http({
             url: "/getFactions",
             method: "GET"
         }).success(function (data) {
             var factions = data;
+            $scope.loadingText = "Loading campaign info";
             $http({
                 url: "/getCampaignInfo",
                 method: "GET"
             }).success(function (data) {
 
+                $scope.loadingText = "Intitializing";
                 var campaignInfo = data;
-
+                var countryList = {};
                 var geojson = L.geoJson(regions, {
                     style: campaignInfo,
                     onEachFeature: onEachFeature
-                }).addTo(map);
-
-                //map.whenReady(function() {
-                //    new L.Control.MiniMap(regions).addTo(map);
-                //});
+                })
+                    //.addTo(map);
 
                 function showCountries() {
                     geojson.setStyle(style_countries);
@@ -62,7 +66,6 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
 
                 function style_countries(feature) {
                     var temp_region = getRegionById(campaignInfo,  feature.id);
-                    if(feature.id == '2003') console.log(feature);
                     if (!temp_region || !temp_region.owner) return {
                         fillColor: '#000000',
                         weight: 0,
@@ -71,14 +74,18 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                         dashArray: '5',
                         fillOpacity: 1
                     };
-                    return {
-                        fillColor: getCountryColours(feature.properties.name, temp_region.owner),
-                        weight: 2,
-                        opacity: 1,
-                        color: '#000000',
-                        dashArray: '5',
-                        fillOpacity: 1
-                    };
+                    else {
+                        if(!countryList[temp_region.owner]) countryList[temp_region.owner]=[];
+                        countryList[temp_region.owner].push(feature);
+                        return {
+                            fillColor: getCountryColours(feature.properties.name, temp_region.owner),
+                            weight: 2,
+                            opacity: 1,
+                            color: '#000000',
+                            dashArray: '5',
+                            fillOpacity: 1
+                        };
+                    }
                 }
 
                 showCountries();
@@ -189,20 +196,13 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 mapmodes.update = function (region_id, region_name, region_owner) {
                     this._div.innerHTML =
                         '<h2 class="region_edit_title">Edit region</h2>' +
-                        '<span class="region_edit_wrapper region_edit_id">region id : <span style="float:right">' + region_id + '</span></span>' +
-                        '<br>' +
-                        '<br>' +
-                        '<span class="region_edit_wrapper region_edit_name">region name : </span><input type="text" id="region_name_updater" value="' + region_name + '">' +
-                        '<br>' +
-                        '<br>' +
-                        '<span class="region_edit_wrapper region_edit_owner">region owner : </span><input type="text" id="region_country_updater" value="' + region_owner + '">' +
-                        '<br>' +
-                        '<br>' +
+                        '<span class="region_edit_wrapper region_edit_id">region id : <span>' + region_id + '</span></span>' +
+                        '<span class="region_edit_wrapper region_edit_name">region name : <input type="text" id="region_name_updater" value="' + region_name + '"></span>' +
+                        '<span class="region_edit_wrapper region_edit_owner">region owner : <input type="text" id="region_country_updater" value="' + region_owner + '"></span>' +
                         '<button id="button-update">Update</button>' +
                         '<button id="button-reset">Reset</button>' +
                         '<br>';
                     $("#button-update").click(function () {
-                        console.log('start updating');
                         if ($('#region_name_updater').val() && $('#region_name_updater').val() != "" && $('#region_country_updater').val() && $('#region_country_updater').val()) {
                             updateMapInfo(region_id, $('#region_name_updater').val(), $('#region_country_updater').val());
                         }
@@ -215,8 +215,47 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 mapmodes.addTo(map);
                 $('.mapmode').hide();
 
-
-
+                $scope.loadingText = "Calculating countries";
+                var countryJSON = [];
+                for(var i in countryList) {
+                    countryList[i].unitedGeo = [];
+                    for(var j=0; j<countryList[i].length-1;j++) {
+                        countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
+                        countryList[i].unitedGeo.push(turf.polygon(countryList[i][j].geometry.coordinates));
+                    }
+                    //countryList[i][0].geometry.coordinates[0].push(countryList[i][0].geometry.coordinates[0][0]);
+                    //countryList[i].unitedGeo =  turf.polygon(countryList[i][0].geometry.coordinates);
+                    //for(var j=1; j<countryList[i].length-1;j++) {
+                    //    countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
+                    //    var temp_polygon = turf.polygon(countryList[i][j].geometry.coordinates);
+                    //    countryList[i].unitedGeo = turf.union(countryList[i].unitedGeo, temp_polygon);
+                    //    if(turf.union(countryList[i].unitedGeo, temp_polygon).geometry.coordinates[0][0].length > 1) console.log(i);
+                    //}
+                    //countryJSON.push({
+                    //    "type": "Feature",
+                    //    "id": 1,
+                    //    "properties": {"name": i},
+                    //    "geometry": {
+                    //        "type": "Polygon",
+                    //        "coordinates" : countryList[i].unitedGeo.geometry.coordinates
+                    //    }
+                    //});
+                    var poly_fc = turf.featurecollection(countryList[i].unitedGeo);
+                    if(turf.merge(poly_fc)) {
+                        var poly_m = turf.merge(poly_fc);
+                        poly_m.properties.id = i;
+                        countryJSON.push(poly_m);
+                    }
+                }
+                console.log(countryJSON);
+                var regions1 = {
+                    "type": "FeatureCollection",
+                    "features": countryJSON
+                };
+                var geojson1 = L.geoJson(regions1, {
+                    style: campaignInfo,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
 
                 map.on({
                     zoomend: function() {
@@ -235,7 +274,8 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                         console.log(e);
                     }
                 });
-
+                $scope.loading = false;
+                $scope.loadingText = "Complete";
             });
         })
     });
@@ -256,70 +296,8 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
         }).success(function (data) {
             if (data._id) {
 
-                $rootScope.users_online = [];
 
                 $scope.login_error = false;
-
-                //socket.on('login', function (data) {
-                //    var message = "Welcome to Socket.IO Chat – ";
-                //    log(message, {
-                //        prepend: true
-                //    });
-                //    addParticipantsMessage(data);
-                //});
-                //
-                //var user_name = data.login;
-                //var socket = io();
-                //var name = data.login;
-                //var messages = $("#messages");
-                //var message_txt = $("#message_text");
-                //$('.chat .nick').text(name);
-                //
-                //function msg(nick, message) {
-                //    var m = '<div class="msg">' +
-                //        '<span class="user">' + safe(nick) + ':</span> '
-                //        + safe(message) +
-                //        '</div>';
-                //    messages
-                //        .append(m)
-                //        .scrollTop(messages[0].scrollHeight);
-                //}
-                //
-                //function msg_system(message) {
-                //    var m = '<div class="msg system">' + safe(message) + '</div>';
-                //    messages
-                //        .append(m)
-                //        .scrollTop(messages[0].scrollHeight);
-                //}
-                //
-                //socket.on('connecting', function () {
-                //    msg_system('Connecting...');
-                //});
-                //
-                //socket.on('connect', function (data) {
-                //    socket.emit('add user', user_name);
-                //    msg_system('Successfully connected to map chat!');
-                //    socket.emit("message", {message: name + ' connected!', name: 'Admin'});
-                //});
-                //
-                //socket.on('message', function (data) {
-                //    msg(data.name, data.message);
-                //    message_txt.focus();
-                //});
-                //
-                //$("#message_btn").click(function () {
-                //    var text = $("#message_text").val();
-                //    if (text.length <= 0)
-                //        return;
-                //    message_txt.val("");
-                //    socket.emit("message", {message: text, name: name});
-                //});
-                //
-                //function safe(str) {
-                //    return str.replace(/&/g, '&amp;')
-                //        .replace(/</g, '&lt;')
-                //        .replace(/>/g, '&gt;');
-                //}
 
                 var FADE_TIME = 300;
                 var TYPING_TIMER_LENGTH = 400;
@@ -346,13 +324,15 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                 var socket = io();
 
                 function addParticipantsMessage (data) {
-                    var message = '';
-                    if (data.numUsers === 1) {
-                        message += "there's 1 participant";
-                    } else {
-                        message += "there are " + data.numUsers + " participants";
+                    createUsersList(data.listUsers);
+                }
+
+                function createUsersList(users) {
+                    $('.users-list').empty();
+                    for(var i in users) {
+                        $('.users-list').append( "<li class='users-item'>" + users[i] + "</li>" )
                     }
-                    log(message);
+
                 }
 
                 function setUsername () {
@@ -372,16 +352,13 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
 
                 function sendMessage () {
                     var message = $inputMessage.val();
-                    // Prevent markup from being injected into the message
                     message = cleanInput(message);
-                    // if there is a non-empty message and a socket connection
                     if (message && connected) {
                         $inputMessage.val('');
                         addChatMessage({
                             username: username,
                             message: message
                         });
-                        // tell server to execute 'new message' and send along one parameter
                         socket.emit('new message', message);
                     }
                 }
@@ -548,11 +525,6 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                     removeChatTyping(data);
                 });
 
-                socket.on('refresh userlist', function (data) {
-                    console.log(data);
-                    $rootScope.users_online = data;
-                });
-
                 username = cleanInput($usernameInput.val().trim());
                 if (username) {
                     $loginPage.fadeOut();
@@ -565,7 +537,6 @@ app.controller("chatCtrl", function($scope, $rootScope, $http) {
                 $rootScope.isLog = true;
             }
             else {
-                console.log(data);
                 $scope.login_error = data;
             }
         });

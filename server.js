@@ -46,54 +46,8 @@ var io  = require('socket.io').listen(server);
 
 var usernames = {};
 var numUsers = 0;
-//io.sockets.on('connection', function (client, socket) {
-//
-//    client.on('message', function (message) {
-//        try {
-//            client.emit('message', message);
-//            client.broadcast.emit('message', message);
-//        } catch (e) {
-//            console.log(e);
-//            client.disconnect();
-//        }
-//    });
-//});
-//io.on('connection', function (socket) {
-//    socket.on('add user', function (username) {
-//        // we store the username in the socket session for this client
-//        socket.username = username;
-//        // add the client's username to the global list
-//        usernames[username] = username;
-//        ++numUsers;
-//        addedUser = true;
-//        socket.emit('login', {
-//            numUsers: numUsers
-//        });
-//        // echo globally (all clients) that a person has connected
-//        socket.broadcast.emit('user joined', {
-//            username: socket.username,
-//            numUsers: numUsers
-//        });
-//    });
-//    socket.on('disconnect', function () {
-//        // remove the username from global usernames list
-//        if (addedUser) {
-//            delete usernames[socket.username];
-//            --numUsers;
-//
-//            // echo globally that this client has left
-//            socket.broadcast.emit('user left', {
-//                username: socket.username,
-//                numUsers: numUsers
-//            });
-//        }
-//    });
-//});
-
-var usernames = {};
-var numUsers = 0;
 var users = io.sockets;
-//if(users.sockets[0]) console.log(users.sockets);
+
 io.on('connection', function (socket) {
     var addedUser = false;
 
@@ -118,18 +72,6 @@ io.on('connection', function (socket) {
             listUsers : usernames,
             numUsers: numUsers
         });
-        if(users.sockets[0]) console.log(users.sockets);
-        var user_list = [];
-        for(var i=0;i<users.sockets.length; i++) {
-            if(users.sockets[i].username) user_list.push(users.sockets[i].username);
-        }
-        console.log(user_list);
-        socket.emit('refresh userlist', {
-            userlist: user_list
-        });
-        socket.broadcast.emit('refresh userlist', {
-            userlist: user_list
-        });
     });
 
     socket.on('typing', function () {
@@ -140,12 +82,6 @@ io.on('connection', function (socket) {
 
     socket.on('stop typing', function () {
         socket.broadcast.emit('stop typing', {
-            username: socket.username
-        });
-    });
-
-    socket.on('users online', function () {
-        socket.broadcast.emit('update users', {
             username: socket.username
         });
     });
