@@ -113,11 +113,26 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     mapmodes.update(e.target.feature.id, e.target.feature.properties.name, getRegionById(campaignInfo,  e.target.feature.id).owner)
                 }
 
+                function zoomToFeature1(e) {
+                    console.log(e.target);
+                    map.fitBounds(e.target.getBounds());
+                    $('.mapmode').show();
+                    mapmodes.update(e.target.feature.id, e.target.feature.properties.name, getRegionById(campaignInfo,  e.target.feature.id).owner)
+                }
+
                 function onEachFeature(feature, prov) {
                     prov.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
                         click: zoomToFeature
+                    });
+                }
+
+                function onEachFeature1(feature, prov) {
+                    prov.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature1
                     });
                 }
 
@@ -169,24 +184,25 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                             countryList[temp_region.owner].push(feature);
                         }
                     }
-                    console.log(countryList);
                     for(var i in countryList) {
-                        countryList[i].unitedGeo = [];
-                        for(var j=0; j<countryList[i].length;j++) {
-                            if(countryList[i][j].geometry) {
-                                if(countryList[i][j].geometry.coordinates[0][countryList[i][j].geometry.coordinates[0].length-1]!=countryList[i][j].geometry.coordinates[0][0])
-                                    countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
-                                if(matrixLength(countryList[i][j].geometry.coordinates)>3) 
-                                    countryList[i].unitedGeo.push(turf.polygon(countryList[i][j].geometry.coordinates));
+                        if(i != 'undefined') {
+                            countryList[i].unitedGeo = [];
+                            for(var j=0; j<countryList[i].length;j++) {
+                                if(countryList[i][j].geometry) {
+                                    if(countryList[i][j].geometry.coordinates[0][countryList[i][j].geometry.coordinates[0].length-1]!=countryList[i][j].geometry.coordinates[0][0])
+                                        countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
+                                    if(matrixLength(countryList[i][j].geometry.coordinates)>3) 
+                                        countryList[i].unitedGeo.push(turf.polygon(countryList[i][j].geometry.coordinates));
+                                }
                             }
-                        }
 
-                        var poly_fc = turf.featurecollection(countryList[i].unitedGeo);
-                        if(turf.merge(poly_fc)) {
-                            var poly_m = turf.merge(poly_fc);
-                            poly_m.id = i;
-                            poly_m.properties.name = i;
-                            countryJSON.push(poly_m);
+                            var poly_fc = turf.featurecollection(countryList[i].unitedGeo);
+                            if(turf.merge(poly_fc)) {
+                                var poly_m = turf.merge(poly_fc);
+                                poly_m.id = i;
+                                poly_m.properties.name = i;
+                                countryJSON.push(poly_m);
+                            }
                         }
                     }
                     console.log(countryList);
@@ -265,15 +281,15 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
 
                 $rootScope.loadingText = "Calculating countries";
 
-                // var regions1 = {
-                //     "type": "FeatureCollection",
-                //     "features": calculateCountries(regions, campaignInfo)
-                // };
-                // var geojson1 = L.geoJson(regions1, {
-                //     style: campaignInfo,
-                //     onEachFeature: onEachFeature
-                // }).addTo(map);
-                // geojson1.setStyle(style_countries);
+                var regions1 = {
+                    "type": "FeatureCollection",
+                    "features": calculateCountries(regions, campaignInfo)
+                };
+                var geojson1 = L.geoJson(regions1, {
+                    style: campaignInfo,
+                    onEachFeature: onEachFeature1
+                }).addTo(map);
+                geojson1.setStyle(style_countries);
 
                 map.on({
                     zoomend: function() {
