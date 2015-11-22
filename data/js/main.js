@@ -10,8 +10,8 @@ app.service("mapService", function($scope, $rootScope){
 
 app.controller("mainCtrl", function($scope, $rootScope, $http) {
     $scope.loading = true;
-    //$scope.loadingText = "Initializing";
-    $scope.loadingText = "Loading regions";
+    //$rootScope.loadingText = "Initializing";
+    $rootScope.loadingText = "Loading regions";
     $http({
         url: "/getRegionsAll",
         method: "GET"
@@ -22,7 +22,7 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
             "features": data
         };
 
-        var southWest = L.latLng(-1752, 68), northEast = L.latLng(-249, 1932), bounds = L.latLngBounds(southWest, northEast);
+        var southWest = L.latLng(-2252, -168), northEast = L.latLng(-249, 2932), bounds = L.latLngBounds(southWest, northEast);
 
         var map = L.map('map', {
             crs: L.CRS.Simple,
@@ -34,26 +34,20 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
         function getRegionById(array,  id) {
             return $.grep(array, function(e){ return e.id == id; })[0];
         }
-        $scope.loadingText = "Loading factions";
+        $rootScope.loadingText = "Loading factions";
         $http({
             url: "/getFactions",
             method: "GET"
         }).success(function (data) {
             var factions = data;
-            $scope.loadingText = "Loading campaign info";
+            $rootScope.loadingText = "Loading campaign info";
             $http({
                 url: "/getCampaignInfo",
                 method: "GET"
             }).success(function (data) {
 
-                $scope.loadingText = "Intitializing";
+                $rootScope.loadingText = "Intitializing";
                 var campaignInfo = data;
-                var countryList = {};
-                var geojson = L.geoJson(regions, {
-                    style: campaignInfo,
-                    onEachFeature: onEachFeature
-                })
-                    //.addTo(map);
 
                 function showCountries() {
                     geojson.setStyle(style_countries);
@@ -66,17 +60,21 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
 
                 function style_countries(feature) {
                     var temp_region = getRegionById(campaignInfo,  feature.id);
-                    if (!temp_region || !temp_region.owner) return {
-                        fillColor: '#000000',
-                        weight: 0,
-                        opacity: 0,
-                        color: '#000000',
-                        dashArray: '5',
-                        fillOpacity: 1
-                    };
+                    if (!temp_region || !temp_region.owner) {
+                        // if(!countryList['undefined']) countryList['undefined'] = [];
+                        // countryList['undefined'].push(feature);
+                        return {
+                            fillColor: '#000000',
+                            weight: 0,
+                            opacity: 0,
+                            color: '#000000',
+                            dashArray: '5',
+                            fillOpacity: 1
+                        }
+                    }
                     else {
-                        if(!countryList[temp_region.owner]) countryList[temp_region.owner]=[];
-                        countryList[temp_region.owner].push(feature);
+                        // if(!countryList[temp_region.owner]) countryList[temp_region.owner]=[];
+                        // countryList[temp_region.owner].push(feature);
                         return {
                             fillColor: getCountryColours(feature.properties.name, temp_region.owner),
                             weight: 2,
@@ -87,9 +85,7 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                         };
                     }
                 }
-
-                showCountries();
-
+              
                 function highlightFeature(e) {
                     var prov = e.target;
                     prov.setStyle({
@@ -149,16 +145,63 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                         regions.features[regions.features.indexOf(getRegionById(regions.features,  region_id))].properties.name = region_name;
                     })
                 }
-
-                function resetMapInfo(region_id, region_owner) {
-                    $http({
-                        url: "/resetCampaignInfo",
-                        method: "POST"
-                    }).success(function (data) {
-                        campaignInfo = data;
-                        showCountries();
-                    })
+                function matrixLength(matrix) {
+                    var len = 0;
+                    for(var i in matrix) {
+                        for(var j in matrix[i]) {
+                            len++;
+                        }
+                    }
+                    return len;
                 }
+                function calculateCountries(regions, campaignInfo) {
+                    var countryJSON = [];
+                    var countryList = [];
+                    for(var i in regions.features) {
+                        var feature = regions.features[i];
+                        var temp_region = getRegionById(campaignInfo,  feature.id);
+                        if (!temp_region || !temp_region.owner) {
+                            if(!countryList['undefined']) countryList['undefined'] = [];
+                            countryList['undefined'].push(feature);
+                        }
+                        else {
+                            if(!countryList[temp_region.owner]) countryList[temp_region.owner]=[];
+                            countryList[temp_region.owner].push(feature);
+                        }
+                    }
+                    console.log(countryList);
+                    for(var i in countryList) {
+                        countryList[i].unitedGeo = [];
+                        for(var j=0; j<countryList[i].length;j++) {
+                            if(countryList[i][j].geometry) {
+                                if(countryList[i][j].geometry.coordinates[0][countryList[i][j].geometry.coordinates[0].length-1]!=countryList[i][j].geometry.coordinates[0][0])
+                                    countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
+                                if(matrixLength(countryList[i][j].geometry.coordinates)>3) 
+                                    countryList[i].unitedGeo.push(turf.polygon(countryList[i][j].geometry.coordinates));
+                            }
+                        }
+
+                        var poly_fc = turf.featurecollection(countryList[i].unitedGeo);
+                        if(turf.merge(poly_fc)) {
+                            var poly_m = turf.merge(poly_fc);
+                            poly_m.id = i;
+                            poly_m.properties.name = i;
+                            countryJSON.push(poly_m);
+                        }
+                    }
+                    console.log(countryList);
+                    console.log(countryJSON);
+                    return countryJSON;
+                }
+                // function resetMapInfo(region_id, region_owner) {
+                //     $http({
+                //         url: "/resetCampaignInfo",
+                //         method: "POST"
+                //     }).success(function (data) {
+                //         campaignInfo = data;
+                //         showCountries();
+                //     })
+                // }
 
                 var info = L.control();
                 info.onAdd = function (map) {
@@ -169,8 +212,8 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 info.update = function (props, id, country) {
                     this._div.innerHTML =
                         '<h4>Region information</h4>' +
-                        (country && props ? props.name : "") +
-                        '<br>' + (country && id ? id : "") +
+                        (props ? props.name : "") +
+                        '<br>' + (id ? id : "") +
                         '<br>' + (country ? country : "");
                     //'<br>' + (religion ? religion:"");
                 };
@@ -183,7 +226,6 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     }
                 }).addTo(map);
                 map.on('draw:created', function(e) {
-                    console.log(e);
                     featureGroup.addLayer(e.layer);
                 });
 
@@ -213,49 +255,25 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 };
                 mapmodes.setPosition('topleft');
                 mapmodes.addTo(map);
-                $('.mapmode').hide();
+                $('.mapmode').hide();             
 
-                $scope.loadingText = "Calculating countries";
-                var countryJSON = [];
-                for(var i in countryList) {
-                    countryList[i].unitedGeo = [];
-                    for(var j=0; j<countryList[i].length-1;j++) {
-                        countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
-                        countryList[i].unitedGeo.push(turf.polygon(countryList[i][j].geometry.coordinates));
-                    }
-                    //countryList[i][0].geometry.coordinates[0].push(countryList[i][0].geometry.coordinates[0][0]);
-                    //countryList[i].unitedGeo =  turf.polygon(countryList[i][0].geometry.coordinates);
-                    //for(var j=1; j<countryList[i].length-1;j++) {
-                    //    countryList[i][j].geometry.coordinates[0].push(countryList[i][j].geometry.coordinates[0][0]);
-                    //    var temp_polygon = turf.polygon(countryList[i][j].geometry.coordinates);
-                    //    countryList[i].unitedGeo = turf.union(countryList[i].unitedGeo, temp_polygon);
-                    //    if(turf.union(countryList[i].unitedGeo, temp_polygon).geometry.coordinates[0][0].length > 1) console.log(i);
-                    //}
-                    //countryJSON.push({
-                    //    "type": "Feature",
-                    //    "id": 1,
-                    //    "properties": {"name": i},
-                    //    "geometry": {
-                    //        "type": "Polygon",
-                    //        "coordinates" : countryList[i].unitedGeo.geometry.coordinates
-                    //    }
-                    //});
-                    var poly_fc = turf.featurecollection(countryList[i].unitedGeo);
-                    if(turf.merge(poly_fc)) {
-                        var poly_m = turf.merge(poly_fc);
-                        poly_m.properties.id = i;
-                        countryJSON.push(poly_m);
-                    }
-                }
-                console.log(countryJSON);
-                var regions1 = {
-                    "type": "FeatureCollection",
-                    "features": countryJSON
-                };
-                var geojson1 = L.geoJson(regions1, {
+                var geojson = L.geoJson(regions, {
                     style: campaignInfo,
                     onEachFeature: onEachFeature
                 }).addTo(map);
+                showCountries();
+
+                $rootScope.loadingText = "Calculating countries";
+
+                // var regions1 = {
+                //     "type": "FeatureCollection",
+                //     "features": calculateCountries(regions, campaignInfo)
+                // };
+                // var geojson1 = L.geoJson(regions1, {
+                //     style: campaignInfo,
+                //     onEachFeature: onEachFeature
+                // }).addTo(map);
+                // geojson1.setStyle(style_countries);
 
                 map.on({
                     zoomend: function() {
@@ -271,11 +289,11 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     },
                     click: function(e) {
                         $('.mapmode').hide();
-                        console.log(e);
                     }
                 });
+
                 $scope.loading = false;
-                $scope.loadingText = "Complete";
+                $rootScope.loadingText = "Complete";
             });
         })
     });

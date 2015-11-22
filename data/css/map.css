@@ -99,9 +99,11 @@ body {
     font-family: serif;
     font-size: small;
     text-align: center;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-color: rgba(0,0,0,.4);
+    border-radius: 3px;
+    box-shadow: none;
     z-index: 9999;
     width: 200px;
     left: 40px;
@@ -113,10 +115,19 @@ body {
 .mapmode input {
     float: right;
     width: 50%;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #999 !important;
 }
 .mapmode span {
     text-align: left;
     float: left;
+}
+.mapmode button {
+    border-radius: 4px !important;
+    border: 1px solid #999 !important;
+    background: white;
+    width: 56px;
+    margin: 0 5px;
 }
 
 .region_edit_title {
@@ -178,12 +189,12 @@ body {
 
 #chat-window {
     bottom: 20px;
-    right: 30px;
+    right: 20px;
     position: fixed;
     background: white;
     width: 300px;
     height: 300px;
-    border: 4px double black;
+    border: 4px double #999999;
     border-radius: 8px;
     z-index: 1020;
 }
@@ -208,12 +219,6 @@ ul {
     width: 100%;
 }
 
-/* Login Page */
-
-.login.page {
-    background-color: #000;
-}
-
 .login.page .form {
     margin-top: -100px;
     position: absolute;
@@ -225,13 +230,13 @@ ul {
 .login.page .form .usernameInput, .login.page .form .passwordInput {
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #999999;
     outline: none;
     padding-bottom: 8px;
     text-align: center;
     width: 250px;
     margin: 0 25px 10px;
-    color: #fff;
+    color: #000000;
     font-size: 14px;
 }
 .login.page .form .passwordInput {
@@ -241,16 +246,13 @@ ul {
     font-size: 200%;
 }
 
-.login.page .title {
-    color: #fff;
-}
-
 .login_btn {
     background: white;
     outline: none;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    border: 1px solid #999 !important;
 }
 
 .chat.page {
