@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="./css/mapbox.css" />
     <script type="text/javascript" src="./js/lib/mapbox.js"></script>
 
+    <link rel="stylesheet" href="./css/control.minimap.css" />
+    <script type="text/javascript" src="./js/lib/control.minimap.js"></script>
+
     <link rel="stylesheet" href="./css/leaflet.draw.css" />
     <script type="text/javascript" src="./js/lib/leaflet.draw.js"></script>
 
@@ -30,34 +33,37 @@
         {{loadingText}}
       </div>
     </div>
-    <div id="map"></div>
-    <div id="chat-window" ng-controller="chatCtrl">
-      <ul class="pages">
-        <li class="chat page">
-          <div class="chatArea">
-            <ul class="messages"></ul>
-            <input class="inputMessage" placeholder="Type here..."/>
-          </div>
-          <div class="chatUsers">
-            <span>Users Online :</span>
-            <ul class="users-list">
-              <li ng-repeat="user_name in users_online" class="users-item">{{user_name}}</li>
-            </ul>
-          </div>
-        </li>
-        <li class="login page">
-          <form class="form">
-            <h2 class="title">Login</h2>
-            <input class="usernameInput" type="text" maxlength="14" placeholder="Login" ng-model="chat_login"/>
-            <input class="passwordInput" type="password" maxlength="14" placeholder="Password" ng-model="chat_password"/>
-            <span class="login_error_text" ng-show="login_error.error">{{login_error.msg}}</span>
-            <br><br><br>
-            <input type="submit" class="login_btn" value="LOG IN" ng-click="login(chat_login,chat_password)"/>
-          </form>
-        </li>
-      </ul>
+    <div id="game">
+      <div id="map"></div>
+      <div id="bottom-menu-wrapper"></div>
+      <div id="chat-window" ng-controller="chatCtrl">
+        <ul class="pages">
+          <li class="chat page">
+            <div class="chatArea">
+              <ul class="messages"></ul>
+              <input class="inputMessage" placeholder="Type here..."/>
+            </div>
+            <div class="chatUsers">
+              <span>Users Online :</span>
+              <ul class="users-list">
+                <li ng-repeat="user_name in users_online" class="users-item">{{user_name}}</li>
+              </ul>
+            </div>
+          </li>
+          <li class="login page">
+            <form class="form">
+              <h2 class="title">Login</h2>
+              <input class="usernameInput" type="text" maxlength="14" placeholder="Login" ng-model="chat_login"/>
+              <input class="passwordInput" type="password" maxlength="14" placeholder="Password" ng-model="chat_password"/>
+              <span class="login_error_text" ng-show="login_error.error">{{login_error.msg}}</span>
+              <br><br>
+              <input type="submit" class="login_btn" value="LOG IN" ng-click="login(chat_login,chat_password)"/>
+            </form>
+          </li>
+        </ul>
       </div>
     </div>
+
     <!--<script type="text/javascript" src="./js/regions.js"></script>-->
     <!--<script type="text/javascript" src="./js/mapCtrl.js"></script>-->
     <script type="text/javascript" src="./js/main.js"></script>

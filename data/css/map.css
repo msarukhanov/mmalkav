@@ -10,6 +10,10 @@
 /*}*/
 body {
     overflow: hidden;
+    margin: 0 auto;
+    /* float: left; */
+    max-width: 1200px;
+    height: 100%;
 }
 
 #loading {
@@ -39,13 +43,51 @@ body {
 }
 
 #map {
+    width: calc(100% - 12px);
+    height: calc(100% - 225px);
+    max-width: 1200px;
+    margin: 5px auto 0px;
+    background-color: rgb(0,105,148);
+    /*background: url('./images/watertexture.jpg');*/
+    position: absolute;
+    overflow: hidden;
+    padding-bottom: 200px;
+}
+
+#game {
     width: calc(100% - 16px);
     height: calc(100% - 16px);
-    background-color: rgb(0,105,148);
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: transparent;
     position: absolute;
     overflow: hidden;
 }
 
+#bottom-menu-wrapper {
+    padding: 2px 8px;
+    font-family: serif;
+    font-size: small;
+    text-align: center;
+    background-color: #fff;
+    border: 4px double #999;
+    border-color: rgba(0,0,0,.4);
+    border-radius: 8px;
+    box-shadow: none;
+    z-index: 1009;
+    width: calc(100% - 317px);
+    left: 0px;
+    bottom: 14px;
+    height: 188px;
+    position: absolute;
+    display: block !important;
+}
+.leaflet-control-layers-minimap {
+    z-index: 1050;
+}
+.leaflet-bottom .leaflet-control {
+    margin-bottom: 190px;
+}
 /*.leaflet-zoom-animated {*/
     /*background: url('/img/europe.svg');*/
 /*}*/
@@ -106,9 +148,9 @@ body {
     box-shadow: none;
     z-index: 9999;
     width: 200px;
-    left: 40px;
-    top: 72px;
-    position: fixed;
+    left: 30px;
+    top: 64px;
+    position: absolute;
     display:block !important;
 }
 
@@ -188,15 +230,16 @@ body {
 }
 
 #chat-window {
-    bottom: 20px;
-    right: 20px;
-    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
     background: white;
     width: 300px;
-    height: 300px;
+    height: 200px;
     border: 4px double #999999;
     border-radius: 8px;
     z-index: 1020;
+
 }
 
 ul {
@@ -220,10 +263,9 @@ ul {
 }
 
 .login.page .form {
-    margin-top: -100px;
+    margin-top: 10px;
     position: absolute;
     text-align: center;
-    top: 50%;
     width: 100%;
 }
 
@@ -234,7 +276,7 @@ ul {
     outline: none;
     padding-bottom: 8px;
     text-align: center;
-    width: 250px;
+    width: 242px;
     margin: 0 25px 10px;
     color: #000000;
     font-size: 14px;
@@ -244,6 +286,7 @@ ul {
 }
 .login.page .title {
     font-size: 200%;
+    margin: 10px 0 20px;
 }
 
 .login_btn {

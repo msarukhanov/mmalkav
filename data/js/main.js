@@ -114,7 +114,16 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                 }
 
                 function zoomToFeature1(e) {
-                    console.log(e.target);
+                    var prov = e.target;
+                    prov.setStyle({
+                        weight: 2,
+                        color: 'red',
+                        dashArray: '',
+                        fillOpacity: 1
+                    });
+                    if (!L.Browser.ie && !L.Browser.opera) {
+                        prov.bringToBack();
+                    }
                     map.fitBounds(e.target.getBounds());
                     $('.mapmode').show();
                     mapmodes.update(e.target.feature.id, e.target.feature.properties.name, getRegionById(campaignInfo,  e.target.feature.id).owner)
@@ -132,7 +141,8 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     prov.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlight,
-                        click: zoomToFeature1
+                        click: zoomToFeature,
+                        dblclick: zoomToFeature1
                     });
                 }
 
@@ -205,8 +215,6 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                             }
                         }
                     }
-                    console.log(countryList);
-                    console.log(countryJSON);
                     return countryJSON;
                 }
                 // function resetMapInfo(region_id, region_owner) {
@@ -290,6 +298,17 @@ app.controller("mainCtrl", function($scope, $rootScope, $http) {
                     onEachFeature: onEachFeature1
                 }).addTo(map);
                 geojson1.setStyle(style_countries);
+
+                var map222 = {
+                    'Countries': geojson1,
+                    'Provinces': geojson
+                };
+
+                var layersControl = L.control.layers.minimap(map222, {
+
+                }, {
+                    collapsed: false
+                }).addTo(map);
 
                 map.on({
                     zoomend: function() {

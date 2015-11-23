@@ -1,270 +1,350 @@
-L.Control.MiniMap = L.Control.extend({
-	options: {
-		position: 'bottomright',
-		toggleDisplay: false,
-		zoomLevelOffset: -5,
-		zoomLevelFixed: false,
-		zoomAnimation: false,
-		autoToggleDisplay: false,
-		width: 150,
-		height: 150,
-		aimingRectOptions: {color: "#ff7800", weight: 1, clickable: false},
-		shadowRectOptions: {color: "#000000", weight: 1, clickable: false, opacity:0, fillOpacity:0}
-	},
-	
-	hideText: 'Hide MiniMap',
-	
-	showText: 'Show MiniMap',
-	
-	//layer is the map layer to be shown in the minimap
-	initialize: function (layer, options) {
-		L.Util.setOptions(this, options);
-		//Make sure the aiming rects are non-clickable even if the user tries to set them clickable (most likely by forgetting to specify them false)
-		this.options.aimingRectOptions.clickable = false;
-		this.options.shadowRectOptions.clickable = false;
-		this._layer = layer;
-	},
-	
-	onAdd: function (map) {
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.cloneLayer = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+	/*
+	 * Leaflet.layerscontrol-minimap
+	 *
+	 * Layers control with synced minimaps for Leaflet.
+	 *
+	 * Jan Pieter Waagmeester <jieter@jieter.nl>
+	 */
+	var cloneLayer = require('leaflet-clonelayer');
 
-		this._mainMap = map;
+	require('leaflet.sync');
 
-		//Creating the container and stopping events from spilling through to the main map.
-		this._container = L.DomUtil.create('div', 'leaflet-control-minimap');
-		this._container.style.width = this.options.width + 'px';
-		this._container.style.height = this.options.height + 'px';
-		L.DomEvent.disableClickPropagation(this._container);
-		L.DomEvent.on(this._container, 'mousewheel', L.DomEvent.stopPropagation);
+	L.Control.Layers.Minimap = L.Control.Layers.extend({
+		options: {
+			position: 'bottomleft',
+			topPadding: 10,
+			bottomPadding: 40,
+			overlayBackgroundLayer: false
+		},
 
+		filter: function (string) {
+			string = string.trim();
 
-		this._miniMap = new L.Map(this._container,
-		{
-			attributionControl: false,
-			zoomControl: false,
-			zoomAnimation: this.options.zoomAnimation,
-			autoToggleDisplay: this.options.autoToggleDisplay,
-			touchZoom: !this.options.zoomLevelFixed,
-			scrollWheelZoom: !this.options.zoomLevelFixed,
-			doubleClickZoom: !this.options.zoomLevelFixed,
-			boxZoom: !this.options.zoomLevelFixed,
-			crs: map.options.crs
-		});
+			var visibleLayers = {};
+			var layerLabels = this._container.querySelectorAll('label');
+			for (var i = 0; i < layerLabels.length; i++) {
+				var layerLabel = layerLabels[i];
 
-		this._miniMap.addLayer(this._layer);
-
-		//These bools are used to prevent infinite loops of the two maps notifying each other that they've moved.
-		this._mainMapMoving = false;
-		this._miniMapMoving = false;
-
-		//Keep a record of this to prevent auto toggling when the user explicitly doesn't want it.
-		this._userToggledDisplay = false;
-		this._minimized = false;
-
-		if (this.options.toggleDisplay) {
-			this._addToggleButton();
-		}
-
-		this._miniMap.whenReady(L.Util.bind(function () {
-			this._aimingRect = L.rectangle(this._mainMap.getBounds(), this.options.aimingRectOptions).addTo(this._miniMap);
-			this._shadowRect = L.rectangle(this._mainMap.getBounds(), this.options.shadowRectOptions).addTo(this._miniMap);
-			this._mainMap.on('moveend', this._onMainMapMoved, this);
-			this._mainMap.on('move', this._onMainMapMoving, this);
-			this._miniMap.on('movestart', this._onMiniMapMoveStarted, this);
-			this._miniMap.on('move', this._onMiniMapMoving, this);
-			this._miniMap.on('moveend', this._onMiniMapMoved, this);
-		}, this));
-
-		return this._container;
-	},
-
-	addTo: function (map) {
-		L.Control.prototype.addTo.call(this, map);
-		this._miniMap.setView(this._mainMap.getCenter(), this._decideZoom(true));
-		this._setDisplay(this._decideMinimized());
-		return this;
-	},
-
-	onRemove: function (map) {
-		this._mainMap.off('moveend', this._onMainMapMoved, this);
-		this._mainMap.off('move', this._onMainMapMoving, this);
-		this._miniMap.off('moveend', this._onMiniMapMoved, this);
-
-		this._miniMap.removeLayer(this._layer);
-	},
-
-	_addToggleButton: function () {
-		this._toggleDisplayButton = this.options.toggleDisplay ? this._createButton(
-				'', this.hideText, 'leaflet-control-minimap-toggle-display', this._container, this._toggleDisplayButtonClicked, this) : undefined;
-	},
-
-	_createButton: function (html, title, className, container, fn, context) {
-		var link = L.DomUtil.create('a', className, container);
-		link.innerHTML = html;
-		link.href = '#';
-		link.title = title;
-
-		var stop = L.DomEvent.stopPropagation;
-
-		L.DomEvent
-			.on(link, 'click', stop)
-			.on(link, 'mousedown', stop)
-			.on(link, 'dblclick', stop)
-			.on(link, 'click', L.DomEvent.preventDefault)
-			.on(link, 'click', fn, context);
-
-		return link;
-	},
-
-	_toggleDisplayButtonClicked: function () {
-		this._userToggledDisplay = true;
-		if (!this._minimized) {
-			this._minimize();
-			this._toggleDisplayButton.title = this.showText;
-		}
-		else {
-			this._restore();
-			this._toggleDisplayButton.title = this.hideText;
-		}
-	},
-
-	_setDisplay: function (minimize) {
-		if (minimize != this._minimized) {
-			if (!this._minimized) {
-				this._minimize();
-			}
-			else {
-				this._restore();
-			}
-		}
-	},
-
-	_minimize: function () {
-		// hide the minimap
-		if (this.options.toggleDisplay) {
-			this._container.style.width = '19px';
-			this._container.style.height = '19px';
-			this._toggleDisplayButton.className += ' minimized';
-		}
-		else {
-			this._container.style.display = 'none';
-		}
-		this._minimized = true;
-	},
-
-	_restore: function () {
-		if (this.options.toggleDisplay) {
-			this._container.style.width = this.options.width + 'px';
-			this._container.style.height = this.options.height + 'px';
-			this._toggleDisplayButton.className = this._toggleDisplayButton.className
-					.replace(/(?:^|\s)minimized(?!\S)/g, '');
-		}
-		else {
-			this._container.style.display = 'block';
-		}
-		this._minimized = false;
-	},
-
-	_onMainMapMoved: function (e) {
-		if (!this._miniMapMoving) {
-			this._mainMapMoving = true;
-			this._miniMap.setView(this._mainMap.getCenter(), this._decideZoom(true));
-			this._setDisplay(this._decideMinimized());
-		} else {
-			this._miniMapMoving = false;
-		}
-		this._aimingRect.setBounds(this._mainMap.getBounds());
-	},
-
-	_onMainMapMoving: function (e) {
-		this._aimingRect.setBounds(this._mainMap.getBounds());
-	},
-
-	_onMiniMapMoveStarted:function (e) {
-		var lastAimingRect = this._aimingRect.getBounds();
-		var sw = this._miniMap.latLngToContainerPoint(lastAimingRect.getSouthWest());
-		var ne = this._miniMap.latLngToContainerPoint(lastAimingRect.getNorthEast());
-		this._lastAimingRectPosition = {sw:sw,ne:ne};
-	},
-
-	_onMiniMapMoving: function (e) {
-		if (!this._mainMapMoving && this._lastAimingRectPosition) {
-			this._shadowRect.setBounds(new L.LatLngBounds(this._miniMap.containerPointToLatLng(this._lastAimingRectPosition.sw),this._miniMap.containerPointToLatLng(this._lastAimingRectPosition.ne)));
-			this._shadowRect.setStyle({opacity:1,fillOpacity:0.3});
-		}
-	},
-
-	_onMiniMapMoved: function (e) {
-		if (!this._mainMapMoving) {
-			this._miniMapMoving = true;
-			this._mainMap.setView(this._miniMap.getCenter(), this._decideZoom(false));
-			this._shadowRect.setStyle({opacity:0,fillOpacity:0});
-		} else {
-			this._mainMapMoving = false;
-		}
-	},
-
-	_decideZoom: function (fromMaintoMini) {
-		if (!this.options.zoomLevelFixed) {
-			if (fromMaintoMini)
-				return this._mainMap.getZoom() + this.options.zoomLevelOffset;
-			else {
-				var currentDiff = this._miniMap.getZoom() - this._mainMap.getZoom();
-				var proposedZoom = this._miniMap.getZoom() - this.options.zoomLevelOffset;
-				var toRet;
-				
-				if (currentDiff > this.options.zoomLevelOffset && this._mainMap.getZoom() < this._miniMap.getMinZoom() - this.options.zoomLevelOffset) {
-					//This means the miniMap is zoomed out to the minimum zoom level and can't zoom any more.
-					if (this._miniMap.getZoom() > this._lastMiniMapZoom) {
-						//This means the user is trying to zoom in by using the minimap, zoom the main map.
-						toRet = this._mainMap.getZoom() + 1;
-						//Also we cheat and zoom the minimap out again to keep it visually consistent.
-						this._miniMap.setZoom(this._miniMap.getZoom() -1);
-					} else {
-						//Either the user is trying to zoom out past the mini map's min zoom or has just panned using it, we can't tell the difference.
-						//Therefore, we ignore it!
-						toRet = this._mainMap.getZoom();
-					}
+				if (string !== '' && layerLabel._layerName.indexOf(string) === -1) {
+					L.DomUtil.addClass(layerLabel, 'leaflet-minimap-hidden');
 				} else {
-					//This is what happens in the majority of cases, and always if you configure the min levels + offset in a sane fashion.
-					toRet = proposedZoom;
+					L.DomUtil.removeClass(layerLabel, 'leaflet-minimap-hidden');
+					visibleLayers[layerLabel._layerName] = cloneLayer(layerLabel._minimap._layer);
 				}
-				this._lastMiniMapZoom = this._miniMap.getZoom();
-				return toRet;
 			}
-		} else {
-			if (fromMaintoMini)
-				return this.options.zoomLevelFixed;
-			else
-				return this._mainMap.getZoom();
-		}
-	},
+			this._onListScroll();
 
-	_decideMinimized: function () {
-		if (this._userToggledDisplay) {
-			return this._minimized;
-		}
+			return visibleLayers;
+		},
 
-		if (this.options.autoToggleDisplay) {
-			if (this._mainMap.getBounds().contains(this._miniMap.getBounds())) {
-				return true;
+		isCollapsed: function () {
+			return !L.DomUtil.hasClass(this._container, 'leaflet-control-layers-expanded');
+		},
+
+		_expand: function () {
+			L.Control.Layers.prototype._expand.call(this);
+			this._onListScroll();
+		},
+
+		_initLayout: function () {
+			L.Control.Layers.prototype._initLayout.call(this);
+
+			L.DomUtil.addClass(this._container, 'leaflet-control-layers-minimap');
+			L.DomEvent.on(this._container, 'scroll', this._onListScroll, this);
+		},
+
+		_update: function () {
+			L.Control.Layers.prototype._update.call(this);
+
+			this._map.on('resize', this._onResize, this);
+			this._onResize();
+
+			this._map.whenReady(this._onListScroll, this);
+		},
+
+		_addItem: function (obj) {
+			var container = obj.overlay ? this._overlaysList : this._baseLayersList;
+			var label = L.DomUtil.create('label', 'leaflet-minimap-container', container);
+			label._layerName = obj.name;
+			var checked = this._map.hasLayer(obj.layer);
+
+			label._minimap = this._createMinimap(
+				L.DomUtil.create('div', 'leaflet-minimap', label),
+				obj.layer,
+				obj.overlay
+			);
+			var span = L.DomUtil.create('span', 'leaflet-minimap-label', label);
+
+			var input;
+			if (obj.overlay) {
+				input = document.createElement('input');
+				input.type = 'checkbox';
+				input.className = 'leaflet-control-layers-selector';
+				input.defaultChecked = checked;
+			} else {
+				input = this._createRadioElement('leaflet-base-layers', checked);
 			}
-			return false;
+			input.layerId = L.stamp(obj.layer);
+			span.appendChild(input);
+
+			L.DomEvent.on(label, 'click', this._onInputClick, this);
+
+			var name = L.DomUtil.create('span', '', span);
+			name.innerHTML = ' ' + obj.name;
+
+			return label;
+		},
+
+		_onResize: function () {
+			var mapHeight = this._map.getContainer().clientHeight;
+			var controlHeight = this._container.clientHeight;
+
+			if (controlHeight > mapHeight - this.options.bottomPadding) {
+				this._container.style.overflowY = 'scroll';
+			}
+			this._container.style.maxHeight = (mapHeight - this.options.bottomPadding - this.options.topPadding) + 'px';
+		},
+
+		_onListScroll: function () {
+			var minimaps = document.querySelectorAll('label[class="leaflet-minimap-container"]');
+			if (minimaps.length === 0) {
+				return;
+			}
+
+			var first, last;
+			if (this.isCollapsed()) {
+				first = last = -1;
+			} else {
+				var minimapHeight = minimaps.item(0).clientHeight;
+				var container = this._container;
+				var listHeight = container.clientHeight;
+				var scrollTop = container.scrollTop;
+
+				first = Math.floor(scrollTop / minimapHeight);
+				last = Math.ceil((scrollTop + listHeight) / minimapHeight);
+			}
+
+			for (var i = 0; i < minimaps.length; ++i) {
+				var minimap = minimaps[i].childNodes.item(0);
+				var map = minimap._miniMap;
+				var layer = map._layer;
+
+				if (!layer) {
+					continue;
+				}
+
+				if (i >= first && i <= last) {
+					if (!map.hasLayer(layer)) {
+						layer.addTo(map);
+					}
+					map.invalidateSize();
+				} else if (map.hasLayer(layer)) {
+					map.removeLayer(layer);
+				}
+			}
+		},
+
+		_createMinimap: function (mapContainer, originalLayer, isOverlay) {
+			var minimap = mapContainer._miniMap = L.map(mapContainer, {
+				attributionControl: false,
+				zoomControl: false
+			});
+
+			// disable interaction.
+			minimap.dragging.disable();
+			minimap.touchZoom.disable();
+			minimap.doubleClickZoom.disable();
+			minimap.scrollWheelZoom.disable();
+
+			// create tilelayer, but do not add it to the map yet.
+			if (isOverlay && this.options.overlayBackgroundLayer) {
+				// add a background for overlays if a background layer is defined.
+				minimap._layer = L.layerGroup([
+					cloneLayer(this.options.overlayBackgroundLayer),
+					cloneLayer(originalLayer)
+				]);
+			} else {
+				minimap._layer = cloneLayer(originalLayer);
+			}
+
+			var map = this._map;
+			map.whenReady(function () {
+				minimap.setView(map.getCenter(), map.getZoom());
+				map.sync(minimap);
+			});
+
+			return minimap;
+		}
+	});
+
+	L.control.layers.minimap = function (baseLayers, overlays, options) {
+		return new L.Control.Layers.Minimap(baseLayers, overlays, options);
+	};
+
+},{"leaflet-clonelayer":2,"leaflet.sync":3}],2:[function(require,module,exports){
+	function cloneLayer(layer) {
+		var options = layer.options;
+
+		// Tile layers
+		if (layer instanceof L.TileLayer) {
+			return L.tileLayer(layer._url, options);
+		}
+		if (layer instanceof L.ImageOverlay) {
+			return L.imageOverlay(layer._url, layer._bounds, options);
 		}
 
-		return this._minimized;
+		// Marker layers
+		if (layer instanceof L.Marker) {
+			return L.marker(layer.getLatLng(), options);
+		}
+		if (layer instanceof L.circleMarker) {
+			return L.circleMarker(layer.getLatLng(), options);
+		}
+
+		// Vector layers
+		if (layer instanceof L.Polygon || layer instanceof L.Rectangle) {
+			return L.polygon(layer.getLatLngs(), options);
+		}
+		if (layer instanceof L.Polyline) {
+			return L.polyline(layer.getLatLngs(), options);
+		}
+		// MultiPolyline is removed in leaflet 0.8-dev
+		if (L.MultiPolyline && layer instanceof L.MultiPolyline) {
+			return L.polyline(layer.getLatLngs(), options);
+		}
+		// MultiPolygon is removed in leaflet 0.8-dev
+		if (L.MultiPolygon && layer instanceof L.MultiPolygon) {
+			return L.multiPolygon(layer.getLatLngs(), options);
+		}
+		if (layer instanceof L.Circle) {
+			return L.circle(layer.getLatLng(), layer.getRadius(), options);
+		}
+		if (layer instanceof L.GeoJSON) {
+			return L.geoJson(layer.toGeoJSON(), options);
+		}
+
+		// layer/feature groups
+		if (layer instanceof L.LayerGroup || layer instanceof L.FeatureGroup) {
+			var layergroup = L.layerGroup();
+			layer.eachLayer(function (inner) {
+				layergroup.addLayer(cloneLayer(inner));
+			});
+			return layergroup;
+		}
+
+		throw 'Unknown layer, cannot clone this layer';
 	}
-});
 
-L.Map.mergeOptions({
-	miniMapControl: false
-});
+	module.exports = cloneLayer;
 
-L.Map.addInitHook(function () {
-	if (this.options.miniMapControl) {
-		this.miniMapControl = (new L.Control.MiniMap()).addTo(this);
-	}
-});
+},{}],3:[function(require,module,exports){
+	/*
+	 * Extends L.Map to synchronize the interaction on one map to one or more other maps.
+	 */
 
-L.control.minimap = function (options) {
-	return new L.Control.MiniMap(options);
-};
+	(function () {
+		'use strict';
+
+		L.Map = L.Map.extend({
+			sync: function (map, options) {
+				this._initSync();
+				options = options || {};
+
+				// prevent double-syncing the map:
+				var present = false;
+				this._syncMaps.forEach(function (other) {
+					if (map === other) {
+						present = true;
+					}
+				});
+
+				if (!present) {
+					this._syncMaps.push(map);
+				}
+
+				if (!options.noInitialSync) {
+					map.setView(this.getCenter(), this.getZoom(), {
+						animate: false,
+						reset: true
+					});
+				}
+				return this;
+			},
+
+			// unsync maps from each other
+			unsync: function (map) {
+				var self = this;
+
+				if (this._syncMaps) {
+					this._syncMaps.forEach(function (synced, id) {
+						if (map === synced) {
+							self._syncMaps.splice(id, 1);
+						}
+					});
+				}
+
+				return this;
+			},
+
+			// overload methods on originalMap to replay on _syncMaps;
+			_initSync: function () {
+				if (this._syncMaps) {
+					return;
+				}
+				var originalMap = this;
+
+				this._syncMaps = [];
+
+				L.extend(originalMap, {
+					setView: function (center, zoom, options, sync) {
+						if (!sync) {
+							originalMap._syncMaps.forEach(function (toSync) {
+								toSync.setView(center, zoom, options, true);
+							});
+						}
+						return L.Map.prototype.setView.call(this, center, zoom, options);
+					},
+
+					panBy: function (offset, options, sync) {
+						if (!sync) {
+							originalMap._syncMaps.forEach(function (toSync) {
+								toSync.panBy(offset, options, true);
+							});
+						}
+						return L.Map.prototype.panBy.call(this, offset, options);
+					},
+
+					_onResize: function (event, sync) {
+						if (!sync) {
+							originalMap._syncMaps.forEach(function (toSync) {
+								toSync._onResize(event, true);
+							});
+						}
+						return L.Map.prototype._onResize.call(this, event);
+					}
+				});
+
+				originalMap.on('zoomend', function () {
+					originalMap._syncMaps.forEach(function (toSync) {
+						toSync.setView(originalMap.getCenter(), originalMap.getZoom(), {
+							animate: false,
+							reset: false
+						});
+					});
+				}, this);
+
+				originalMap.dragging._draggable._updatePosition = function () {
+					L.Draggable.prototype._updatePosition.call(this);
+					var self = this;
+					originalMap._syncMaps.forEach(function (toSync) {
+						L.DomUtil.setPosition(toSync.dragging._draggable._element, self._newPos);
+						toSync.fire('moveend');
+					});
+				};
+			}
+		});
+	})();
+
+},{}]},{},[1])(1)
+});
