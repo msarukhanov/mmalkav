@@ -96,9 +96,11 @@ body {
     padding: 6px 8px;
     font-family: serif;
     font-size: small;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-color: rgba(0,0,0,.4);
+    border-radius: 3px;
+    min-height: 120px;
 }
 
 
@@ -148,8 +150,8 @@ body {
     box-shadow: none;
     z-index: 9999;
     width: 200px;
-    left: 30px;
-    top: 64px;
+    left: 100px;
+    top: 70px;
     position: absolute;
     display:block !important;
 }

@@ -97,5 +97,11 @@
   },
   "independent" : {
     "color": "rgb(110,110,110)"
+  },
+  "india" : {
+    "color": "rgb(255,153,51)"
+  },
+  "china" : {
+    "color": "rgb(170,56,30)"
   }
 }
