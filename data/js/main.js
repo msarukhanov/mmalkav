@@ -273,10 +273,12 @@ var app = angular.module("medievalMap", []);
             $scope.loading = true;
             $rootScope.loadingText = "Loading regions";
             $http({
-                url: "/getRegionsAll",
+                url: "/getProvinces",
                 method: "GET"
             }).success( function( data ) {
-                var provinces = data;
+
+                var provinces = JSON.parse(data);
+
                 $rootScope.loadingText = "Loading factions";
 
                 $http({
