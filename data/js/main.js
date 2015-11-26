@@ -4,7 +4,8 @@
 
 var app = angular.module("medievalMap", []);
 
-    app.controller("chatCtrl", function($scope, $rootScope, $http) {
+    app.controller("chatCtrl", ['$scope', '$rootScope', '$http',
+        function($scope, $rootScope, $http) {
 
         $rootScope.isLog = false;
         $scope.login_error = false;
@@ -265,7 +266,8 @@ var app = angular.module("medievalMap", []);
                 }
             });
         };
-    });
+    }
+    ]);
 
     app.controller("mainCtrl", ['$scope', '$rootScope', '$http', 'mapService', 'controlsService',
         function ($scope, $rootScope, $http, mapService, controlsService) {
@@ -326,7 +328,7 @@ var app = angular.module("medievalMap", []);
                                 }
                             }).success(function () {
                                 $rootScope.getRegionById(region_id).name = region_name;
-                                regionsProvinces.features[regionsProvinces.features.indexOf($rootScope.getRegionById(regions.features,  region_id))].properties.name = region_name;
+                                regionsProvinces.features[regionsProvinces.features.indexOf($rootScope.getRegionById(regionsProvinces.features,  region_id))].properties.name = region_name;
                             })
                         };
 
@@ -561,7 +563,6 @@ var app = angular.module("medievalMap", []);
                 };
 
                 var layersControl = L.control.layers.minimap(mapCollection, {
-
                 }, {
                     collapsed: false
                 }).addTo($rootScope.map);
