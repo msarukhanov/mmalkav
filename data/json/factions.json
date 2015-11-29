@@ -103,5 +103,17 @@
   },
   "china" : {
     "color": "rgb(170,56,30)"
+  },
+  "jerusalem" : {
+    "color": "rgb(77,77,77)"
+  },
+  "cairo" : {
+    "color": "rgb(109,129,127)"
+  },
+  "africa" : {
+    "color": "rgb(168,91,42)"
+  },
+  "horde" : {
+    "color": "rgb(240,210,44)"
   }
 }

@@ -1,7 +1,3 @@
-/**
- * Created by mark on 11/17/2015.
- */
-
 var app = angular.module("medievalMap", []);
 
     app.controller("chatCtrl", ['$scope', '$rootScope', '$http',
@@ -299,7 +295,7 @@ var app = angular.module("medievalMap", []);
 
                         $rootScope.loadingText = "Intitializing";
 
-                        var southWest = L.latLng(-2252, -168), northEast = L.latLng(-249, 2932), bounds = L.latLngBounds(southWest, northEast);
+                        var southWest = L.latLng(-2252, -168), northEast = L.latLng(-249, 3232), bounds = L.latLngBounds(southWest, northEast);
                         $rootScope.map = L.map('map', {
                             crs: L.CRS.Simple,
                             maxZoom: 1,
@@ -307,29 +303,26 @@ var app = angular.module("medievalMap", []);
                         }).setView([-1250, 700], 0);
                         L.mapbox.accessToken = 'pk.eyJ1IjoibW1hbGthdiIsImEiOiJjaWg0aTRyaWswMHN1a3FseXQ2MjRrbnl0In0.TnjjiSL_H80Z0thxcF-rtw';
 
-                        $rootScope.updateMapInfo = function(region_id, region_name, region_owner) {
+                        $rootScope.updateMapInfo = function(region_id, region_name, region_owner, update_type) {
+                            var url = update_type == 1 ? "/setCampaignInfo" : "/newCampaignInfo";
                             $http({
-                                url: "/setCampaignInfo",
+                                url: url,
                                 method: "POST",
                                 data: {
                                     'regionID': region_id,
                                     'new_owner': region_owner
                                 }
                             }).success(function () {
-                                $rootScope.campaignInfo[$rootScope.campaignInfo.indexOf($rootScope.getRegionById(region_id))].owner = region_owner;
-                                $rootScope.geojsonProvinces.setStyle($rootScope.style_countries);
-                            });
-                            $http({
-                                url: "/editRegionsOne",
-                                method: "POST",
-                                data: {
-                                    'regionID': region_id,
-                                    'regionName': region_name
+                                if($rootScope.campaignInfo[$rootScope.campaignInfo.indexOf($rootScope.getRegionById(region_id))]) {
+                                    $rootScope.campaignInfo[$rootScope.campaignInfo.indexOf($rootScope.getRegionById(region_id))].owner = region_owner;
+                                    $rootScope.geojsonProvinces.setStyle($rootScope.style_countries);
                                 }
-                            }).success(function () {
-                                $rootScope.getRegionById(region_id).name = region_name;
-                                regionsProvinces.features[regionsProvinces.features.indexOf($rootScope.getRegionById(regionsProvinces.features,  region_id))].properties.name = region_name;
-                            })
+                                else $http({url: "/getCampaignInfo",method: "GET"}).success(function (data) {
+                                    $rootScope.campaignInfo = data;
+                                    $rootScope.campaignInfo[$rootScope.campaignInfo.indexOf($rootScope.getRegionById(region_id))].owner = region_owner;
+                                    $rootScope.geojsonProvinces.setStyle($rootScope.style_countries);
+                                });
+                            });
                         };
 
                         var regionsProvinces = {
@@ -356,7 +349,6 @@ var app = angular.module("medievalMap", []);
                             zoomend: function() {
                                 $rootScope.map.fitBounds($rootScope.map.getBounds());
                                 if($rootScope.map.getZoom() == '1') {
-                                    console.log('zoomed');
                                     //$('.mapmode').show();
                                 }
                                 else {
@@ -380,7 +372,6 @@ var app = angular.module("medievalMap", []);
     ]);
 
     app.service("mapService", function($rootScope){
-
         function getCountryColours(n, country) {
             return n == "" ? "white" : $rootScope.factions[country].color;
         }
@@ -398,55 +389,29 @@ var app = angular.module("medievalMap", []);
         };
         $rootScope.style_countries = function(feature) {
             var temp_region = $rootScope.getRegionById(feature.id);
-            if (!temp_region || !temp_region.owner) {
-                return {
-                    fillColor: '#000000',
-                    weight: 0,
-                    opacity: 0,
-                    color: '#000000',
-                    dashArray: '5',
-                    fillOpacity: 1
-                }
-            }
-            else {
-                return {
-                    fillColor: getCountryColours(feature.properties.name, temp_region.owner),
-                    weight: 2,
-                    opacity: 1,
-                    color: '#000000',
-                    dashArray: '5',
-                    fillOpacity: 1
-                };
-            }
+            if (!temp_region || !temp_region.owner) {return {fillColor: '#000000',weight: 0,opacity: 0,color: '#000000',dashArray: '5',fillOpacity: 1}}
+            else {return {fillColor: getCountryColours(feature.properties.name, temp_region.owner),weight: 2,opacity: 1,color: '#000000',dashArray: '5',fillOpacity: 1}}
         };
-
         return {
             onEachFeature : function(feature, prov) {
+                if(feature.id == '2001') console.log(feature);
                 function highlightFeature(e) {
-                    var prov = e.target;
-                    prov.setStyle({
-                        weight: 2,
-                        color: 'red',
-                        dashArray: '',
-                        fillOpacity: 1
-                    });
-                    if (!L.Browser.ie && !L.Browser.opera) {
-                        prov.bringToFront();
-                    }
-                    var temp_country = $rootScope.getRegionById(prov.feature.id) ? $rootScope.getRegionById(prov.feature.id).owner : '';
-                    $rootScope.info.update(prov.feature.properties, prov.feature.id, temp_country);
+                    e.target.setStyle({weight: 2,color: 'red',dashArray: '',fillOpacity: 1});
+                    if (!L.Browser.ie && !L.Browser.opera) { e.target.bringToFront();}
+                    var temp_country = $rootScope.getRegionById( e.target.feature.id) ? $rootScope.getRegionById( e.target.feature.id).owner : '';
+                    $rootScope.info.update( e.target.feature.properties,  e.target.feature.id, temp_country);
                 }
 
                 function resetHighlight(e) {
-                    var prov = e.target;
-                    prov.setStyle($rootScope.style_countries(prov.feature));
+                    e.target.setStyle($rootScope.style_countries(prov.feature));
                     $rootScope.info.update();
                 }
 
                 function zoomToFeature(e) {
                     $rootScope.map.fitBounds(e.target.getBounds());
                     $('.mapmode').show();
-                    $rootScope.mapmodes.update(e.target.feature.id, e.target.feature.properties.name, $rootScope.getRegionById(e.target.feature.id).owner)
+                    if($rootScope.getRegionById(e.target.feature.id)) $rootScope.mapmodes.update(e.target.feature.id, e.target.feature.properties.name, $rootScope.getRegionById(e.target.feature.id).owner, 1);
+                    else $rootScope.mapmodes.update(e.target.feature.id, e.target.feature.properties.name ? e.target.feature.properties.name : '', '', 0);
                 }
                 prov.on({
                     mouseover: highlightFeature,
@@ -535,7 +500,7 @@ var app = angular.module("medievalMap", []);
                     this.update();
                     return this._div;
                 };
-                $rootScope.mapmodes.update = function (region_id, region_name, region_owner) {
+                $rootScope.mapmodes.update = function (region_id, region_name, region_owner, update_type) {
                     this._div.innerHTML =
                         '<h2 class="region_edit_title">Edit region</h2>' +
                         '<span class="region_edit_wrapper region_edit_id">region id : <span>' + region_id + '</span></span>' +
@@ -546,7 +511,7 @@ var app = angular.module("medievalMap", []);
                         '<br>';
                     $("#button-update").click(function () {
                         if ($('#region_name_updater').val() && $('#region_name_updater').val() != "" && $('#region_country_updater').val() && $('#region_country_updater').val()) {
-                            $rootScope.updateMapInfo(region_id, $('#region_name_updater').val(), $('#region_country_updater').val());
+                            $rootScope.updateMapInfo(region_id, $('#region_name_updater').val(), $('#region_country_updater').val(), update_type);
                         }
                     });
                     $("#button-reset").click(function () {
