@@ -150,7 +150,7 @@ body {
     box-shadow: none;
     z-index: 9999;
     width: 200px;
-    left: 100px;
+    left: 0;
     top: 70px;
     position: absolute;
     display:block !important;

@@ -268,6 +268,14 @@ var app = angular.module("medievalMap", []);
     app.controller("mainCtrl", ['$scope', '$rootScope', '$http', 'mapService', 'controlsService',
         function ($scope, $rootScope, $http, mapService, controlsService) {
 
+            // $http({
+            //     url: "/resetCampaignInfo",
+            //     method: "POST",
+            //     data: {}
+            // }).success(function (data) {
+            //
+            // });
+
             $scope.loading = true;
             $rootScope.loadingText = "Loading regions";
             $http({
