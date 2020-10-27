@@ -22,7 +22,7 @@
   "dependencies": {
     "body-parser": "^1.4.28",
     "express": "^4.13.3",
-    "mongoose": "^4.2.5",
+    "mongoose": "^5.10.11",
     "mongoose-geojson-schema": "0.0.2",
     "socket.io": "^1.3.7",
     "turf": "^2.0.2"
